@@ -15,7 +15,7 @@
         },
         "title": "Hardcore Revive+",
         "frame": "task",
-        "description": "Version 1.9a by StapleTT",
+        "description": "Version 1.10 by StapleTT",
         "background": "minecraft:block/smooth_basalt",
         "show_toast": false,
         "announce_to_chat": false
