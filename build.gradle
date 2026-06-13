@@ -1,0 +1,54 @@
+plugins {
+    id 'base'
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+tasks.register("modJar", Zip) {
+    group = "build"
+    description = "Builds the Fabric/Quilt mod jar."
+
+    archiveBaseName.set(project.archives_base_name)
+    archiveVersion.set(project.version.toString())
+    archiveExtension.set("jar")
+    destinationDirectory.set(layout.buildDirectory.dir("libs"))
+
+    from(".") {
+        include "data/**"
+        include "fabric.mod.json"
+        include "quilt.mod.json"
+        include "pack.mcmeta"
+        include "pack.png"
+        include "hardcore-revive-plus_pack.png"
+        include "README.md"
+        include "LICENSE"
+    }
+}
+
+tasks.register("datapackZip", Zip) {
+    group = "build"
+    description = "Builds the datapack zip."
+
+    archiveBaseName.set("Hardcore Revive+")
+    archiveVersion.set(project.version.toString())
+    archiveExtension.set("zip")
+    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+
+    from(".") {
+        include "data/**"
+        include "pack.mcmeta"
+        include "pack.png"
+        include "README.md"
+        include "LICENSE"
+    }
+}
+
+tasks.named("build") {
+    dependsOn("modJar")
+    dependsOn("datapackZip")
+}
