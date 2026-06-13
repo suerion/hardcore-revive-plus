@@ -1,6 +1,6 @@
 # Check for players touching revive item
-execute at @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run tag @p[distance=..2,gamemode=spectator] add Revive
-execute at @a[tag=Revive] run kill @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}}},limit=1,distance=..5]
+execute at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run tag @p[distance=..2,gamemode=spectator] add Revive
+execute at @a[tag=Revive] run kill @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}}},limit=1,distance=..5]
 execute at @a[tag=Revive] run gamemode survival @p
 
 # Apply debuffs upon revive
