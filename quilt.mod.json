@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "com.modrinth",
+    "id": "mr_hardcore_reviveplus",
+    "version": "1.10.3",
+    "metadata": {
+      "name": "Hardcore Revive+",
+      "description": "A highly configurable data pack that lets you revive your friends in Hardcore mode.",
+      "contributors": { "StapleTT": "Member" },
+      "contact": {
+        "homepage": "https://modrinth.com/datapack/hardcore-revive-plus"
+      },
+      "icon": "hardcore-revive-plus_pack.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "depends": [
+      {
+        "id": "quilt_resource_loader",
+        "versions": "*",
+        "unless": "fabric-resource-loader-v0"
+      }
+    ]
+  }
+}
