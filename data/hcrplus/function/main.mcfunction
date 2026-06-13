@@ -3,11 +3,11 @@ gamerule immediate_respawn false
 gamerule spectators_generate_chunks true
 
 # Destroy disabled Soul Charms
-execute if score mnc_settings mnc_revival matches 0 at @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:totem_of_undying"}}
-execute if score mnc_settings mnc_revival matches 0 at @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:redstone_block",count:4}}
-execute if score mnc_settings mnc_revival matches 0 at @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:bone_block",count:2}}
-execute if score mnc_settings mnc_revival matches 0 at @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:copper_block",count:2}}
-execute if score mnc_settings mnc_revival matches 0 run kill @e[nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}]
+execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:totem_of_undying"}}
+execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:redstone_block",count:4}}
+execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:bone_block",count:2}}
+execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:copper_block",count:2}}
+execute if score mnc_settings mnc_revival matches 0 run kill @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}]
 
 # Revive
 execute if score mnc_settings mnc_revival matches 1 run scoreboard players add mnc_settings reviveTimer 1
