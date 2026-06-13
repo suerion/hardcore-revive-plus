@@ -1,0 +1,36 @@
+name: Build HCR+
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Build mod jar and datapack zip
+        run: ./gradlew buildAll
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hardcore-revive-plus-build
+          path: |
+            build/libs/*.jar
+            build/distributions/*.zip
