@@ -14,7 +14,6 @@ execute if score mnc_settings mnc_revival matches 1 run scoreboard players add m
 execute if score mnc_settings mnc_revival matches 1 if score mnc_settings reviveTimer matches 12.. run function hcrplus:lives/revive
 
 # Detect deaths
-execute as @a[scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
 execute as @a[scores={deaths=1..}] run function hcrplus:lives/death
 execute as @a[scores={Lives=1..,respawn=1},gamemode=spectator] run function hcrplus:lives/respawn
 
