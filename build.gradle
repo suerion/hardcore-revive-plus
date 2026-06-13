@@ -21,13 +21,22 @@ tasks.register("modJar", Zip) {
     from(".") {
         include "data/**"
         include "META-INF/**"
-        include "fabric.mod.json"
-        include "quilt.mod.json"
         include "pack.mcmeta"
         include "pack.png"
         include "hardcore-revive-plus_pack.png"
         include "README.md"
         include "LICENSE"
+    }
+    from("fabric.mod.json") {
+        expand(
+                version: project.version
+        )
+    }
+
+    from("quilt.mod.json") {
+        expand(
+                version: project.version
+        )
     }
 }
 
