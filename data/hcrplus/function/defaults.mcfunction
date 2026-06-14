@@ -38,3 +38,10 @@ scoreboard players set mnc_settings mnc_autoRevive 0
 
 # Auto Revive Timer (1 = 1 minute, 2 = 5 minutes, 3 = 10 minutes, 4 = 1 hour)
 scoreboard players set mnc_settings mnc_autoReviveTimer 3
+
+# Difficulty Mode
+# 0 = Respect server/world difficulty
+# 1 = Force Easy
+# 2 = Force Normal
+# 3 = Force Hard
+scoreboard players set hcrplus_settings hcrplus_difficulty_mode 0
