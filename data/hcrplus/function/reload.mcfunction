@@ -1,5 +1,4 @@
 # Scores
-difficulty hard
 scoreboard objectives add deaths deathCount
 scoreboard objectives add Lives dummy
 scoreboard objectives add lifeReset dummy
@@ -28,6 +27,7 @@ scoreboard objectives add mnc_announceRevive dummy
 scoreboard objectives add mnc_autoReviveTimer dummy
 scoreboard objectives add hcrplus_ghostAlert dummy
 scoreboard objectives add hcrplus_ghostCooldown dummy
+scoreboard objectives add hcrplus_difficulty_mode dummy
 
 # Revive timer because Minecraft doesn't have a built-in way to do this
 scoreboard objectives add dummy_1200 dummy
