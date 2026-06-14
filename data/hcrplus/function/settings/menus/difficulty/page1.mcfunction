@@ -1,3 +1,5 @@
+execute unless score hcrplus_settings hcrplus_difficulty_mode matches 0..3 run scoreboard players set hcrplus_settings hcrplus_difficulty_mode 0
+
 tellraw @s ["\n",{"text":" Hardcore Revive+ ","color":"red"},{"text":"| ","color":"dark_gray"},{"text":"Difficulty","color":"gray"},"\n "]
 
 execute if score hcrplus_settings hcrplus_difficulty_mode matches 0 run tellraw @s [" ",{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Respect the server/world difficulty. HCRPlus will not change it."}]},"text":"ⓘ"},{"color":"gray","text":" Difficulty Mode: "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_difficulty_easy set 1"},"color":"green","hover_event":{"action":"show_text","value":[{"text":"Click to change this setting"}]},"text":"Respect Server"},{"text":"\n "}]
