@@ -187,6 +187,27 @@ execute as @a[scores={hcrplus_debug_give_jam=1..}] if entity @s[tag=hcrplus_oper
 execute as @a[scores={hcrplus_debug_give_jam=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
 scoreboard players set @a[scores={hcrplus_debug_give_jam=1..}] hcrplus_debug_give_jam 0
 
+# Difficulty Settings
+execute as @a[scores={hcrplus_difficulty_page1=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/difficulty/page1
+execute as @a[scores={hcrplus_difficulty_page1=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_difficulty_page1=1..}] hcrplus_difficulty_page1 0
+
+execute as @a[scores={hcrplus_difficulty_respect=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/difficulty/toggles/respect
+execute as @a[scores={hcrplus_difficulty_respect=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_difficulty_respect=1..}] hcrplus_difficulty_respect 0
+
+execute as @a[scores={hcrplus_difficulty_easy=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/difficulty/toggles/easy
+execute as @a[scores={hcrplus_difficulty_easy=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_difficulty_easy=1..}] hcrplus_difficulty_easy 0
+
+execute as @a[scores={hcrplus_difficulty_normal=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/difficulty/toggles/normal
+execute as @a[scores={hcrplus_difficulty_normal=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_difficulty_normal=1..}] hcrplus_difficulty_normal 0
+
+execute as @a[scores={hcrplus_difficulty_hard=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/difficulty/toggles/hard
+execute as @a[scores={hcrplus_difficulty_hard=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_difficulty_hard=1..}] hcrplus_difficulty_hard 0
+
 # Enable all triggers
 scoreboard players enable @a _hcrplus_settings
 scoreboard players enable @a hcrplus_lives_page1
