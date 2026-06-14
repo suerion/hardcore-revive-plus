@@ -1,42 +1,4 @@
-tellraw @s [
-    {"text":"\n"},
-    {"color":"red","text":" Hardcore Revive+ "},
-    {"color":"dark_gray","text":"| "},
-    {"color":"gray","text":"Settings "},
-    {"text":"\n\n"},
-
-    {"color":"gray","text":" "},
-    {"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Features related to how players interact with lives"}]},"text":"ⓘ"},
-    {"color":"yellow","text":" "},
-    {"click_event":{"action":"run_command","command":"/trigger hcrplus_lives_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Lives"},
-
-    {"color":"yellow","text":"   "},
-
-    {"color":"yellow","text":" "},
-    {"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Features related to craftable items"}]},"text":"ⓘ"},
-    {"color":"yellow","text":" "},
-    {"click_event":{"action":"run_command","command":"/trigger hcrplus_items_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Items"},
-
-    {"color":"yellow","text":"    "},
-
-    {"color":"gray","hover_event":{"action":"show_text","value":[{"text":"A menu with preset settings combinations"}]},"text":"ⓘ"},
-    {"color":"yellow","text":" "},
-    {"click_event":{"action":"run_command","command":"/trigger hcrplus_presets_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Presets"},
-
-    {"color":"yellow","text":"    "},
-
-    {"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Configure whether HCRPlus should respect or force the server difficulty"}]},"text":"ⓘ"},
-    {"color":"yellow","text":" "},
-    {"click_event":{"action":"run_command","command":"/trigger hcrplus_difficulty_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Difficulty"},
-
-    {"color":"yellow","text":"    "},
-
-    {"color":"gray","hover_event":{"action":"show_text","value":[{"text":"A menu with options to create custom items"}]},"text":"ⓘ"},
-    {"color":"yellow","text":" "},
-    {"click_event":{"action":"run_command","command":"/trigger hcrplus_debug_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Debug"},
-
-    {"text":"\n "}
-]
+tellraw @s [{"text":"\n"},{"color":"red","text":" Hardcore Revive+ "},{"color":"dark_gray","text":"| "},{"color":"gray","text":"Settings "},{"text":"\n\n"},{"color":"gray","text":" "},{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Features related to how players interact with lives"}]},"text":"ⓘ"},{"color":"yellow","text":" "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_lives_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Lives"},{"color":"yellow","text":"   "},{"color":"yellow","text":" "},{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Features related to craftable items"}]},"text":"ⓘ"},{"color":"yellow","text":" "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_items_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Items"},{"color":"yellow","text":"    "},{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"A menu with preset settings combinations"}]},"text":"ⓘ"},{"color":"yellow","text":" "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_presets_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Presets"},{"color":"yellow","text":"    "},{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"Configure whether HCRPlus should respect or force the server difficulty"}]},"text":"ⓘ"},{"color":"yellow","text":" "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_difficulty_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Difficulty"},{"color":"yellow","text":"    "},{"color":"gray","hover_event":{"action":"show_text","value":[{"text":"A menu with options to create custom items"}]},"text":"ⓘ"},{"color":"yellow","text":" "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_debug_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Click to open"}]},"text":"Debug"},{"text":"\n "}]
 
 scoreboard players set mnc_settings mnc_openedSettings 1
 playsound entity.experience_orb.pickup player @s ~ ~ ~ 0.6 1
