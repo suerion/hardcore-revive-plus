@@ -92,3 +92,9 @@ scoreboard objectives add hcrplus_presets_lifesteal trigger
 scoreboard objectives add hcrplus_debug_page1 trigger
 scoreboard objectives add hcrplus_debug_give_charm trigger
 scoreboard objectives add hcrplus_debug_give_jam trigger
+
+scoreboard objectives add hcrplus_difficulty_page1 trigger
+scoreboard objectives add hcrplus_difficulty_respect trigger
+scoreboard objectives add hcrplus_difficulty_easy trigger
+scoreboard objectives add hcrplus_difficulty_normal trigger
+scoreboard objectives add hcrplus_difficulty_hard trigger
