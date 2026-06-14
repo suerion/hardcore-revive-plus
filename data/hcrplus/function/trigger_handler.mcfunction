@@ -253,3 +253,8 @@ scoreboard players enable @a hcrplus_lives_revive_timer_1m
 scoreboard players enable @a hcrplus_lives_revive_timer_5m
 scoreboard players enable @a hcrplus_lives_revive_timer_10m
 scoreboard players enable @a hcrplus_lives_revive_timer_1h
+scoreboard players enable @a hcrplus_difficulty_page1
+scoreboard players enable @a hcrplus_difficulty_respect
+scoreboard players enable @a hcrplus_difficulty_easy
+scoreboard players enable @a hcrplus_difficulty_normal
+scoreboard players enable @a hcrplus_difficulty_hard
