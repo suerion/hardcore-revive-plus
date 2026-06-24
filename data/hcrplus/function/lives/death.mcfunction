@@ -4,8 +4,6 @@ scoreboard players remove @s Lives 1
 
 # Set spectator if player runs out of lives
 execute if score @s Lives matches 0 run gamemode spectator
-execute if score @s Lives matches 0 if dimension minecraft:overworld run spawnpoint @s ~ ~ ~
-execute if score @s Lives matches 0 if dimension minecraft:the_nether run spawnpoint @s ~ ~ ~
 
 # Broadcast to all players when someone runs out of lives
 execute if score @s Lives matches 0 run tellraw @a [{"selector":"@s","color":"white"},{"text":" has lost their final life and became a ghost.","color":"red"}]
