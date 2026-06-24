@@ -25,8 +25,11 @@ scoreboard players reset @s second
 title @s actionbar {"text":"You have been revived!", "color":"white"}
 execute if score mnc_settings mnc_announceRevive matches 1 run tellraw @a [{"selector":"@s"},{"text":" has returned from the afterlife!","color":"green"}]
 
-# Teleport player to a safe location
-execute as @s run tp @s ~ ~ ~
+# Auto Revive Spawn Mode
+# 0 = Bed / Respawn Anchor, fallback World Spawn
+# 1 = World Spawn
+
+# TODO: Bed / Respawn Anchor and World Spawn teleport handling will be implemented later.
 
 # Particle effects
 execute as @s at @s run particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a
