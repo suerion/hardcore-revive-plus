@@ -219,9 +219,6 @@ execute as @a[scores={hcrplus_ghost_spawn_player=1..}] if entity @s[tag=hcrplus_
 execute as @a[scores={hcrplus_ghost_spawn_player=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
 scoreboard players set @a[scores={hcrplus_ghost_spawn_player=1..}] hcrplus_ghost_spawn_player 0
 
-execute as @a[scores={hcrplus_ghost_spawn_bed=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/ghost_bed
-execute as @a[scores={hcrplus_ghost_spawn_bed=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
-scoreboard players set @a[scores={hcrplus_ghost_spawn_bed=1..}] hcrplus_ghost_spawn_bed 0
 
 execute as @a[scores={hcrplus_ghost_spawn_death=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/ghost_death
 execute as @a[scores={hcrplus_ghost_spawn_death=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
@@ -284,6 +281,5 @@ scoreboard players enable @a hcrplus_difficulty_normal
 scoreboard players enable @a hcrplus_difficulty_hard
 scoreboard players enable @a hcrplus_spawn_page1
 scoreboard players enable @a hcrplus_ghost_spawn_player
-scoreboard players enable @a hcrplus_ghost_spawn_bed
 scoreboard players enable @a hcrplus_ghost_spawn_death
 scoreboard players enable @a hcrplus_revive_spawn_bed
