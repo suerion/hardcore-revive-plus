@@ -45,3 +45,10 @@ scoreboard players set mnc_settings mnc_autoReviveTimer 3
 # 2 = Force Normal
 # 3 = Force Hard
 scoreboard players set hcrplus_settings hcrplus_difficulty_mode 0
+
+# Spawn Mode
+# 0 = World Spawn
+# 1 = Death Location (Default)
+# 2 = Nearest Living Player
+# 3 = Bed / Respawn Anchor
+scoreboard players set hcrplus_settings hcrplus_spawn_mode 1
