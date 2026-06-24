@@ -15,7 +15,7 @@ execute if score @s Lives matches 0 run gamemode spectator
 # TODO: add stored HCRPlus world spawn teleport later
 
 # Nearest Living Player
-execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 1 at @p[gamemode=!spectator,sort=nearest,limit=1] run tp @s ~ ~ ~
+execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 1 at @a[gamemode=!spectator,scores={Lives=1..},sort=nearest,limit=1] run tp @s ~ ~ ~
 
 # Bed / Respawn Anchor
 # TODO: add bed / respawn anchor teleport later

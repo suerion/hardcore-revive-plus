@@ -6,6 +6,8 @@ tellraw @s ["\n",{"text":" Hardcore Revive+ ","color":"red"},{"text":"| ","color
 tellraw @s [" ",{"color":"gray","text":"Ghost Spawn Location"},{"text":"\n"}]
 tellraw @s [" ",{"color":"dark_gray","text":"Where players appear as ghosts after losing their final life."},{"text":"\n\n"}]
 
+tellraw @s [" ",{"color":"gray","text":"HCRPlus World Spawn: "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_set_world_spawn set 1"},"color":"green","text":"Set Current Position"},{"text":"\n\n"}]
+
 tellraw @s [" ",{"color":"gray","text":"World Spawn: "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_ghost_spawn_world set 1"},"color":"green","text":"Select"},{"text":"\n "}]
 tellraw @s [" ",{"color":"gray","text":"Nearest Living Player: "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_ghost_spawn_player set 1"},"color":"yellow","text":"Select"},{"text":"\n "}]
 tellraw @s [" ",{"color":"gray","text":"Bed / Respawn Anchor: "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_ghost_spawn_bed set 1"},"color":"aqua","text":"Select"},{"text":"\n "}]
