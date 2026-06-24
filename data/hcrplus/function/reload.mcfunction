@@ -28,6 +28,8 @@ scoreboard objectives add mnc_autoReviveTimer dummy
 scoreboard objectives add hcrplus_ghostAlert dummy
 scoreboard objectives add hcrplus_ghostCooldown dummy
 scoreboard objectives add hcrplus_difficulty_mode dummy
+scoreboard objectives add hcrplus_ghost_spawn_mode dummy
+
 
 # Revive timer because Minecraft doesn't have a built-in way to do this
 scoreboard objectives add dummy_1200 dummy
@@ -98,3 +100,9 @@ scoreboard objectives add hcrplus_difficulty_respect trigger
 scoreboard objectives add hcrplus_difficulty_easy trigger
 scoreboard objectives add hcrplus_difficulty_normal trigger
 scoreboard objectives add hcrplus_difficulty_hard trigger
+
+scoreboard objectives add hcrplus_ghost_spawn_page1 trigger
+scoreboard objectives add hcrplus_ghost_spawn_world trigger
+scoreboard objectives add hcrplus_ghost_spawn_death trigger
+scoreboard objectives add hcrplus_ghost_spawn_nearest trigger
+scoreboard objectives add hcrplus_ghost_spawn_bed trigger
