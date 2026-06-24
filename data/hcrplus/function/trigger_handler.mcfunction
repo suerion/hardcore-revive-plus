@@ -208,6 +208,27 @@ execute as @a[scores={hcrplus_difficulty_hard=1..}] if entity @s[tag=hcrplus_ope
 execute as @a[scores={hcrplus_difficulty_hard=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
 scoreboard players set @a[scores={hcrplus_difficulty_hard=1..}] hcrplus_difficulty_hard 0
 
+# Spawn Mode Settings
+execute as @a[scores={hcrplus_spawn_page1=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/page1
+execute as @a[scores={hcrplus_spawn_page1=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_spawn_page1=1..}] hcrplus_spawn_page1 0
+
+execute as @a[scores={hcrplus_spawn_world=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/world
+execute as @a[scores={hcrplus_spawn_world=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_spawn_world=1..}] hcrplus_spawn_world 0
+
+execute as @a[scores={hcrplus_spawn_death=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/death
+execute as @a[scores={hcrplus_spawn_death=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_spawn_death=1..}] hcrplus_spawn_death 0
+
+execute as @a[scores={hcrplus_spawn_nearest=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/nearest
+execute as @a[scores={hcrplus_spawn_nearest=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_spawn_nearest=1..}] hcrplus_spawn_nearest 0
+
+execute as @a[scores={hcrplus_spawn_bed=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/bed
+execute as @a[scores={hcrplus_spawn_bed=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_spawn_bed=1..}] hcrplus_spawn_bed 0
+
 # Enable all triggers
 scoreboard players enable @a _hcrplus_settings
 scoreboard players enable @a hcrplus_lives_page1
@@ -258,3 +279,8 @@ scoreboard players enable @a hcrplus_difficulty_respect
 scoreboard players enable @a hcrplus_difficulty_easy
 scoreboard players enable @a hcrplus_difficulty_normal
 scoreboard players enable @a hcrplus_difficulty_hard
+scoreboard players enable @a hcrplus_spawn_page1
+scoreboard players enable @a hcrplus_spawn_world
+scoreboard players enable @a hcrplus_spawn_death
+scoreboard players enable @a hcrplus_spawn_nearest
+scoreboard players enable @a hcrplus_spawn_bed
