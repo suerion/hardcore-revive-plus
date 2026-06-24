@@ -214,9 +214,6 @@ execute as @a[scores={hcrplus_spawn_page1=1..}] if entity @s[tag=!hcrplus_operat
 scoreboard players set @a[scores={hcrplus_spawn_page1=1..}] hcrplus_spawn_page1 0
 
 # Ghost Spawn
-execute as @a[scores={hcrplus_ghost_spawn_world=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/ghost_world
-execute as @a[scores={hcrplus_ghost_spawn_world=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
-scoreboard players set @a[scores={hcrplus_ghost_spawn_world=1..}] hcrplus_ghost_spawn_world 0
 
 execute as @a[scores={hcrplus_ghost_spawn_player=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/ghost_player
 execute as @a[scores={hcrplus_ghost_spawn_player=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
@@ -234,15 +231,6 @@ scoreboard players set @a[scores={hcrplus_ghost_spawn_death=1..}] hcrplus_ghost_
 execute as @a[scores={hcrplus_revive_spawn_bed=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/revive_bed
 execute as @a[scores={hcrplus_revive_spawn_bed=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
 scoreboard players set @a[scores={hcrplus_revive_spawn_bed=1..}] hcrplus_revive_spawn_bed 0
-
-execute as @a[scores={hcrplus_revive_spawn_world=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/revive_world
-execute as @a[scores={hcrplus_revive_spawn_world=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
-scoreboard players set @a[scores={hcrplus_revive_spawn_world=1..}] hcrplus_revive_spawn_world 0
-
-# Set Admin WorldSpawn
-execute as @a[scores={hcrplus_set_world_spawn=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/set_world_spawn
-execute as @a[scores={hcrplus_set_world_spawn=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
-scoreboard players set @a[scores={hcrplus_set_world_spawn=1..}] hcrplus_set_world_spawn 0
 
 # Enable all triggers
 scoreboard players enable @a _hcrplus_settings
@@ -295,10 +283,7 @@ scoreboard players enable @a hcrplus_difficulty_easy
 scoreboard players enable @a hcrplus_difficulty_normal
 scoreboard players enable @a hcrplus_difficulty_hard
 scoreboard players enable @a hcrplus_spawn_page1
-scoreboard players enable @a hcrplus_ghost_spawn_world
 scoreboard players enable @a hcrplus_ghost_spawn_player
 scoreboard players enable @a hcrplus_ghost_spawn_bed
 scoreboard players enable @a hcrplus_ghost_spawn_death
 scoreboard players enable @a hcrplus_revive_spawn_bed
-scoreboard players enable @a hcrplus_revive_spawn_world
-scoreboard players enable @a hcrplus_set_world_spawn

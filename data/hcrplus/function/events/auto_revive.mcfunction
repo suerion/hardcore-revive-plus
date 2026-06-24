@@ -27,9 +27,7 @@ execute if score mnc_settings mnc_announceRevive matches 1 run tellraw @a [{"sel
 
 # Auto Revive Spawn Mode
 # 0 = Bed / Respawn Anchor, fallback World Spawn
-# 1 = World Spawn
-
-# TODO: Bed / Respawn Anchor and World Spawn teleport handling will be implemented later.
+# Vanilla handles this automatically. Do not set spawnpoint here.
 
 # Particle effects
 execute as @s at @s run particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a

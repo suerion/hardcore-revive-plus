@@ -1,3 +1,0 @@
-# revive_world.mcfunction
-scoreboard players set hcrplus_settings hcrplus_revive_spawn_mode 1
-function hcrplus:settings/menus/spawn/page1
