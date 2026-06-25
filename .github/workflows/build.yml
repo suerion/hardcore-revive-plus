@@ -4,7 +4,15 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "gradle.properties"
+      - "pack.mcmeta"
+
   pull_request:
+    paths:
+      - "gradle.properties"
+      - "pack.mcmeta"
+
   workflow_dispatch:
 
 jobs:
