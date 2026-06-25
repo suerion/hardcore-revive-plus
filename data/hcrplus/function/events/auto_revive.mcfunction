@@ -1,3 +1,24 @@
+# Auto Revive Spawn Mode
+# 0 = Vanilla Spawn
+# 1 = Server Spawn
+# 2 = Death Location
+
+# Vanilla Spawn
+# Do not change spawnpoint. Minecraft keeps Bed / Respawn Anchor, otherwise Server Spawn.
+
+# Server Spawn
+# Intentionally overwrite the player's respawn point with the current position.
+# This mode is meant to ignore Bed / Respawn Anchor behavior.
+execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run spawnpoint @s ~ ~ ~
+
+# Death Location
+tag @s add hcrplus_reviving_player
+tag @e[type=minecraft:marker,tag=hcrplus_death_location] remove hcrplus_death_location_match
+execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 as @e[type=minecraft:marker,tag=hcrplus_death_location] if score @s hcrplus_player_id = @a[tag=hcrplus_reviving_player,limit=1] hcrplus_player_id run tag @s add hcrplus_death_location_match
+execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 at @e[type=minecraft:marker,tag=hcrplus_death_location_match,limit=1] run tp @a[tag=hcrplus_reviving_player,limit=1] ~ ~ ~
+kill @e[type=minecraft:marker,tag=hcrplus_death_location_match]
+tag @s remove hcrplus_reviving_player
+
 gamemode survival @s
 
 # Set lives
@@ -24,27 +45,6 @@ scoreboard players reset @s minute
 scoreboard players reset @s second
 title @s actionbar {"text":"You have been revived!", "color":"white"}
 execute if score mnc_settings mnc_announceRevive matches 1 run tellraw @a [{"selector":"@s"},{"text":" has returned from the afterlife!","color":"green"}]
-
-# Auto Revive Spawn Mode
-# 0 = Vanilla Spawn
-# 1 = Server Spawn
-# 2 = Death Location
-
-# Vanilla Spawn
-# Do not change spawnpoint. Minecraft keeps Bed / Respawn Anchor, otherwise Server Spawn.
-
-# Server Spawn
-# Intentionally overwrite the player's respawn point with the current position.
-# This mode is meant to ignore Bed / Respawn Anchor behavior.
-execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run spawnpoint @s ~ ~ ~
-
-# Death Location
-tag @s add hcrplus_reviving_player
-tag @e[type=minecraft:marker,tag=hcrplus_death_location] remove hcrplus_death_location_match
-execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 as @e[type=minecraft:marker,tag=hcrplus_death_location] if score @s hcrplus_player_id = @a[tag=hcrplus_reviving_player,limit=1] hcrplus_player_id run tag @s add hcrplus_death_location_match
-execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 at @e[type=minecraft:marker,tag=hcrplus_death_location_match,limit=1] run tp @a[tag=hcrplus_reviving_player,limit=1] ~ ~ ~
-kill @e[type=minecraft:marker,tag=hcrplus_death_location_match]
-tag @s remove hcrplus_reviving_player
 
 # Particle effects
 execute as @s at @s run particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a
