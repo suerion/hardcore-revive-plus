@@ -103,6 +103,11 @@ scoreboard objectives add hcrplus_difficulty_hard trigger
 
 scoreboard objectives add hcrplus_spawn_page1 trigger
 
+scoreboard objectives add hcrplus_ghost_spawn_server trigger
 scoreboard objectives add hcrplus_ghost_spawn_player trigger
+scoreboard objectives add hcrplus_ghost_spawn_vanilla trigger
 scoreboard objectives add hcrplus_ghost_spawn_death trigger
-scoreboard objectives add hcrplus_revive_spawn_bed trigger
+
+scoreboard objectives add hcrplus_revive_spawn_vanilla trigger
+scoreboard objectives add hcrplus_revive_spawn_server trigger
+scoreboard objectives add hcrplus_revive_spawn_death trigger

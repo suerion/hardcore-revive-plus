@@ -26,8 +26,20 @@ title @s actionbar {"text":"You have been revived!", "color":"white"}
 execute if score mnc_settings mnc_announceRevive matches 1 run tellraw @a [{"selector":"@s"},{"text":" has returned from the afterlife!","color":"green"}]
 
 # Auto Revive Spawn Mode
-# 0 = Bed / Respawn Anchor, fallback World Spawn
-# Vanilla handles this automatically. Do not set spawnpoint here.
+# 0 = Vanilla Spawn
+# 1 = Server Spawn
+# 2 = Death Location
+
+# Vanilla Spawn
+# Do not change spawnpoint. Minecraft keeps Bed / Respawn Anchor, otherwise Server Spawn.
+
+# Server Spawn
+# Intentionally overwrite the player's respawn point with the current position.
+# This mode is meant to ignore Bed / Respawn Anchor behavior.
+execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run spawnpoint @s ~ ~ ~
+
+# Death Location
+# TODO: Needs stored death position.
 
 # Particle effects
 execute as @s at @s run particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a

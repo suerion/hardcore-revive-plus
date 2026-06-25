@@ -1,3 +1,2 @@
-# ghost_death.mcfunction
 scoreboard players set hcrplus_settings hcrplus_ghost_spawn_mode 3
 function hcrplus:settings/menus/spawn/page1

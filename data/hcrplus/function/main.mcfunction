@@ -15,6 +15,10 @@ execute if score mnc_settings mnc_revival matches 1 if score mnc_settings revive
 
 # Detect deaths
 execute as @a[scores={deaths=1..}] run function hcrplus:lives/death
+
+# Keep ghosts in spectator after server restart or force-gamemode
+execute as @a[scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
+
 execute as @a[scores={Lives=1..,respawn=1},gamemode=spectator] run function hcrplus:lives/respawn
 
 # Check for Life Jam uses
