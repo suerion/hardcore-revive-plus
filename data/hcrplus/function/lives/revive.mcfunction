@@ -2,6 +2,7 @@
 execute at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run tag @p[distance=..2,gamemode=spectator] add Revive
 execute at @a[tag=Revive] run kill @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}}},limit=1,distance=..5]
 execute as @a[tag=Revive] at @s run gamemode survival @s
+execute as @a[tag=Revive] at @s run function hcrplus:util/remove_death_marker
 
 # Apply debuffs upon revive
 execute as @a[tag=Revive] at @s if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:slowness 60 1 true

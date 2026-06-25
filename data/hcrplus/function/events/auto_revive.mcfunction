@@ -16,8 +16,9 @@ tag @s add hcrplus_reviving_player
 tag @e[type=minecraft:marker,tag=hcrplus_death_location] remove hcrplus_death_location_match
 execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 as @e[type=minecraft:marker,tag=hcrplus_death_location] if score @s hcrplus_player_id = @a[tag=hcrplus_reviving_player,limit=1] hcrplus_player_id run tag @s add hcrplus_death_location_match
 execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 at @e[type=minecraft:marker,tag=hcrplus_death_location_match,limit=1] run tp @a[tag=hcrplus_reviving_player,limit=1] ~ ~ ~
-kill @e[type=minecraft:marker,tag=hcrplus_death_location_match]
 tag @s remove hcrplus_reviving_player
+
+function hcrplus:util/remove_death_marker
 
 gamemode survival @s
 
