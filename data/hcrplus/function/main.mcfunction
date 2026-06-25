@@ -59,6 +59,9 @@ execute as @a[tag=!nHrCheck] unless score @s hcrplus_ghostCooldown matches 0.. r
 execute unless score mnc_settings mnc_openedSettings matches 1 as @a[tag=!nHrCheck] run function hcrplus:settings/join_prompt
 tag @a add nHrCheck
 
+# Assign persistent HCRPlus player ids
+execute as @a[tag=nHrCheck] unless score @s hcrplus_player_id matches 1.. run function hcrplus:util/assign_player_id
+
 # Auto Revive
 execute if score mnc_settings mnc_autoRevive matches 1 as @a[scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
 execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 1 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 1200

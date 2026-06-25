@@ -1,0 +1,2 @@
+scoreboard players add hcrplus_global hcrplus_next_player_id 1
+scoreboard players operation @s hcrplus_player_id = hcrplus_global hcrplus_next_player_id

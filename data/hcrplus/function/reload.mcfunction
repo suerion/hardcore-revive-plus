@@ -31,6 +31,9 @@ scoreboard objectives add hcrplus_difficulty_mode dummy
 scoreboard objectives add hcrplus_ghost_spawn_mode dummy
 scoreboard objectives add hcrplus_revive_spawn_mode dummy
 
+scoreboard objectives add hcrplus_player_id dummy
+scoreboard objectives add hcrplus_next_player_id dummy
+
 # Revive timer because Minecraft doesn't have a built-in way to do this
 scoreboard objectives add dummy_1200 dummy
 scoreboard objectives add dummy_20 dummy
