@@ -114,3 +114,5 @@ scoreboard objectives add hcrplus_ghost_spawn_death trigger
 scoreboard objectives add hcrplus_revive_spawn_vanilla trigger
 scoreboard objectives add hcrplus_revive_spawn_server trigger
 scoreboard objectives add hcrplus_revive_spawn_death trigger
+
+scoreboard objectives add hcrplus_set_server_spawn trigger

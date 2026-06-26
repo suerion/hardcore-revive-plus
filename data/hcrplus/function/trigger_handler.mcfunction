@@ -213,6 +213,11 @@ execute as @a[scores={hcrplus_spawn_page1=1..}] if entity @s[tag=hcrplus_operato
 execute as @a[scores={hcrplus_spawn_page1=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
 scoreboard players set @a[scores={hcrplus_spawn_page1=1..}] hcrplus_spawn_page1 0
 
+# Set HCRPlus Server Spawn
+execute as @a[scores={hcrplus_set_server_spawn=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/set_server_spawn
+execute as @a[scores={hcrplus_set_server_spawn=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
+scoreboard players set @a[scores={hcrplus_set_server_spawn=1..}] hcrplus_set_server_spawn 0
+
 # Ghost Spawn
 execute as @a[scores={hcrplus_ghost_spawn_server=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/spawn/toggles/ghost_server
 execute as @a[scores={hcrplus_ghost_spawn_server=1..}] if entity @s[tag=!hcrplus_operator] run function hcrplus:settings/deny
@@ -301,3 +306,4 @@ scoreboard players enable @a hcrplus_ghost_spawn_death
 scoreboard players enable @a hcrplus_revive_spawn_vanilla
 scoreboard players enable @a hcrplus_revive_spawn_server
 scoreboard players enable @a hcrplus_revive_spawn_death
+scoreboard players enable @a hcrplus_set_server_spawn

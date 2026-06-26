@@ -16,6 +16,9 @@ execute if score mnc_settings mnc_revival matches 1 if score mnc_settings revive
 # Assign persistent HCRPlus player ids
 execute as @a unless score @s hcrplus_player_id matches 1.. run function hcrplus:util/assign_player_id
 
+# Track last alive position for players on their final life
+execute as @a[scores={Lives=1},gamemode=!spectator] at @s run function hcrplus:util/update_last_alive_location
+
 # Detect deaths
 execute as @a[scores={deaths=1..}] run function hcrplus:lives/death
 
