@@ -4,6 +4,8 @@ tellraw @s ["\n",{"text":" Hardcore Revive+ ","color":"red"},{"text":"| ","color
 
 tellraw @s [" ",{"color":"gray","text":"HCRPlus Server Spawn"},{"text":"\n"}]
 tellraw @s [" ",{"color":"dark_gray","text":"Used when Ghost or Auto Revive is set to Server Spawn."},{"text":"\n"}]
+execute unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [" ",{"color":"red","text":"Status: Not set"},{"text":"\n"}]
+execute if entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [" ",{"color":"green","text":"Status: Set"},{"text":"\n"}]
 tellraw @s [" ",{"click_event":{"action":"run_command","command":"/trigger hcrplus_set_server_spawn set 1"},"color":"green","text":"Set Current Position"},{"text":"\n\n"}]
 
 tellraw @s [" ",{"color":"gray","text":"Ghost Spawn Location"},{"text":"\n"}]

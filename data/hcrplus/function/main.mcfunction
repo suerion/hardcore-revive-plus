@@ -65,6 +65,10 @@ execute as @a[tag=!nHrCheck] unless score @s hcrplus_ghostCooldown matches 0.. r
 execute unless score mnc_settings mnc_openedSettings matches 1 as @a[tag=!nHrCheck] run function hcrplus:settings/join_prompt
 tag @a add nHrCheck
 
+# Notify operators once per join if HCRPlus Server Spawn is not set
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [{"text":"[HCRPlus] ","color":"red"},{"text":"Server Spawn is not set. If you want to use Server Spawn for Ghost or Auto Revive, open Spawn Settings and click Set Current Position.","color":"yellow"}]
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] run tag @s add hcrplus_server_spawn_notice
+
 # Auto Revive
 execute if score mnc_settings mnc_autoRevive matches 1 as @a[scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
 execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 1 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 1200

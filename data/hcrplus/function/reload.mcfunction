@@ -33,6 +33,7 @@ scoreboard objectives add hcrplus_revive_spawn_mode dummy
 
 scoreboard objectives add hcrplus_player_id dummy
 scoreboard objectives add hcrplus_next_player_id dummy
+scoreboard objectives add hcrplus_server_spawn_notice dummy
 
 # Revive timer because Minecraft doesn't have a built-in way to do this
 scoreboard objectives add dummy_1200 dummy
