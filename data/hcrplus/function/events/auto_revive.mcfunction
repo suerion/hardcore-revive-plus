@@ -7,9 +7,7 @@
 # Do not change spawnpoint. Minecraft keeps Bed / Respawn Anchor, otherwise Server Spawn.
 
 # Server Spawn
-# Intentionally overwrite the player's respawn point with the current position.
-# This mode is meant to ignore Bed / Respawn Anchor behavior.
-execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run spawnpoint @s ~ ~ ~
+execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 at @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tp @s ~ ~ ~
 
 # Death Location
 tag @s add hcrplus_reviving_player

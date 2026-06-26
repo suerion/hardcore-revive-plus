@@ -32,9 +32,7 @@ execute if score @s Lives matches 0 run gamemode spectator
 # 3 = Death Location
 
 # Server Spawn
-# Intentionally overwrite the player's respawn point with the current position.
-# This mode is meant to ignore Bed / Respawn Anchor behavior.
-execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 run spawnpoint @s ~ ~ ~
+execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 at @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tp @s ~ ~ ~
 
 # Nearest Living Player
 execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 1 at @a[gamemode=!spectator,scores={Lives=1..},sort=nearest,limit=1] run tp @s ~ ~ ~

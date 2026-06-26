@@ -105,6 +105,7 @@ scoreboard objectives add hcrplus_difficulty_normal trigger
 scoreboard objectives add hcrplus_difficulty_hard trigger
 
 scoreboard objectives add hcrplus_spawn_page1 trigger
+scoreboard objectives add hcrplus_spawn_page2 trigger
 
 scoreboard objectives add hcrplus_ghost_spawn_server trigger
 scoreboard objectives add hcrplus_ghost_spawn_player trigger
