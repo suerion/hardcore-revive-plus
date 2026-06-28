@@ -19,8 +19,11 @@ execute as @a unless score @s hcrplus_player_id matches 1.. run function hcrplus
 # Track last alive position for players on their final life
 execute as @a[scores={Lives=1},gamemode=!spectator] at @s run function hcrplus:util/update_last_alive_location
 
+# Finish vanilla auto revive after forced vanilla respawn
+execute as @a[tag=hcrplus_vanilla_respawn,scores={deaths=1..}] at @s run function hcrplus:events/auto_revive_vanilla_finish
+
 # Detect deaths
-execute as @a[scores={deaths=1..}] run function hcrplus:lives/death
+execute as @a[scores={deaths=1..}] at @s run function hcrplus:lives/death
 
 # Keep ghosts in spectator after server restart or force-gamemode
 execute as @a[scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s

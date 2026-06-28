@@ -1,0 +1,36 @@
+# Finish real vanilla respawn
+scoreboard players set @s deaths 0
+tag @s remove hcrplus_vanilla_respawn
+gamemode survival @s
+
+# Set lives
+execute if score mnc_settings mnc_defaultLives matches 1 run scoreboard players set @s Lives 1
+execute if score mnc_settings mnc_defaultLives matches 3 if score mnc_settings mnc_reviveLifeCount matches 1 run scoreboard players set @s Lives 1
+execute if score mnc_settings mnc_defaultLives matches 3 if score mnc_settings mnc_reviveLifeCount matches 2 run scoreboard players set @s Lives 2
+execute if score mnc_settings mnc_defaultLives matches 3 if score mnc_settings mnc_reviveLifeCount matches 3 run scoreboard players set @s Lives 3
+execute if score mnc_settings mnc_defaultLives matches 5 if score mnc_settings mnc_reviveLifeCount matches 1 run scoreboard players set @s Lives 1
+execute if score mnc_settings mnc_defaultLives matches 5 if score mnc_settings mnc_reviveLifeCount matches 2 run scoreboard players set @s Lives 3
+execute if score mnc_settings mnc_defaultLives matches 5 if score mnc_settings mnc_reviveLifeCount matches 3 run scoreboard players set @s Lives 5
+
+# Apply debuffs
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:slowness 60 1 true
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:weakness 60 1 true
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:glowing 60 1 true
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:hunger 60 1 true
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:mining_fatigue 60 1 true
+execute if score mnc_settings mnc_soulCharmDebuffs matches 1 run effect give @s minecraft:poison 2 0 true
+
+# Reset revive timer and announce revive
+tag @s remove autoRevive
+scoreboard players reset @s reviveTimer
+scoreboard players reset @s minute
+scoreboard players reset @s second
+title @s actionbar {"text":"You have been revived!", "color":"white"}
+execute if score mnc_settings mnc_announceRevive matches 1 run tellraw @a [{"selector":"@s"},{"text":" has returned from the afterlife!","color":"green"}]
+
+# Particle effects
+execute as @s at @s run particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a
+execute as @s at @s run particle minecraft:soul ~ ~1 ~ 0.5 1 0.5 0.05 75 force @a
+
+playsound minecraft:ui.toast.challenge_complete master @s ~ ~ ~ 10 1
+effect give @s minecraft:blindness 1 5
