@@ -36,6 +36,7 @@ execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spaw
 
 # Nearest Living Player
 execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 1 at @s run tp @s @a[gamemode=!spectator,scores={Lives=1..},sort=nearest,limit=1]
+execute if score @s Lives matches 0 if score hcrplus_settings hcrplus_ghost_spawn_mode matches 1 run tellraw @a [{"text":"[HCRPlus Debug] Nearest ghost spawn executed for ","color":"green"},{"selector":"@s"}]
 
 # Vanilla Spawn
 # Do not change spawnpoint. Minecraft keeps Bed / Respawn Anchor, otherwise Server Spawn.
