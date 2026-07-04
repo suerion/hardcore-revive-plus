@@ -1,7 +1,28 @@
+## Development Status
+
+Hardcore Revive+ is currently being prepared for Minecraft 26.2 and a future mod-based rewrite.
+
+The stable public release remains the datapack / datapack-mod version for Minecraft 26.1.2.
+
+The standalone mod build is experimental and is not intended for public release yet. It is only used for development and testing while the 26.2 update and mod port are still in progress.
+
+Please do not use the standalone mod build on production servers until it is marked as stable.
+
+## Project Status
+
+Hardcore Revive+ was originally created by **StapleTT**.
+
+Since the original project is no longer actively maintained for newer Minecraft versions, this repository continues the development with the goal of preserving and expanding the project while keeping the original datapack concept intact.
+
+The long-term goal is to support both the original datapack experience and an optional Fabric/Quilt mod that adds features and compatibility which are not possible with a datapack alone.
+
+The original Discord server is still available for the existing community:
+
 ## Need help? Join our [Discord](https://discord.gg/2698cavvue).
 
-Are you tired of standard Minecraft death mechanics? Maybe dying over and over again just to respawn is too easy, or playing Hardcore mode with one life is too difficult. Hardcore Revive+ solves this problem by adding a highly configurable lives system to your Minecraft world that fits all scenarios.
+For bug reports, feature requests, and development of this continuation, please use the GitHub Issues page:
 
+https://github.com/suerion/hardcore-revive-plus/issues
 ## Key Features
 - Once a player loses all of their lives, they become a ghost. Ghosts are spectators that can generate and load chunks and possess players to grant them buffs.
 - You can revive another fallen player by crafting a **Soul Charm** and dropping it on the ground. Once a ghost touches a Soul Charm, they are revived with a set amount of lives.
@@ -35,6 +56,21 @@ Hardcore Revive+ comes with an expansive and easily accessible settings menu tha
 - **Auto Revive** - When enabled, ghosts will automatically be revived after 10 minutes.
 - **Auto Revive Timer** - The amount of time in seconds before a ghost is automatically revived.
 
+### Ghosts
+- **Ghost Spawn Mode** - Choose where ghosts will appear after losing their final life:
+    - **Server Spawn** - Respawn at the configured server spawn.
+    - **Nearest Living Player** - Respawn near the closest living player.
+    - **Vanilla Spawn** - Respawn at the player's bed or respawn anchor, otherwise the world spawn.
+    - **Death Location** - Respawn at the location where the player died.
+
+### Revive
+- **Auto Revive Spawn Mode** - Choose where automatically revived players will respawn:
+    - **Vanilla Spawn** - Respawn at the player's bed or respawn anchor, otherwise the world spawn.
+    - **Server Spawn** - Respawn at the configured server spawn.
+    - **Death Location** - Respawn at the location where the player died.
+
+### World
+- **Respect Server Difficulty** - When enabled, Hardcore Revive+ uses the server's current difficulty instead of enforcing its own behavior. This allows the datapack to integrate more naturally with servers that change difficulty dynamically.
 
 ### Items
 - **Soul Charm** - When disabled, Soul Charms will no longer be craftable and split into their crafting recipe when dropped.
