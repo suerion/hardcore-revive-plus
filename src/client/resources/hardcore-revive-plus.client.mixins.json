@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.suerion.hcrplus.client.mixin",
+	"package": "com.suerion.hcrplus.client.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
 		"ExampleClientMixin"

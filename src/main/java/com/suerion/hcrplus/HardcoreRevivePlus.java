@@ -1,4 +1,4 @@
-package net.suerion.hcrplus;
+package com.suerion.hcrplus;
 
 import net.fabricmc.api.ModInitializer;
 

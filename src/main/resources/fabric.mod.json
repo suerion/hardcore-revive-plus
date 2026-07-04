@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.suerion.hcrplus.HardcoreRevivePlus"
+			"com.suerion.hcrplus.HardcoreRevivePlus"
 		],
 		"client": [
-			"net.suerion.hcrplus.client.HardcoreRevivePlusClient"
+			"com.suerion.hcrplus.client.HardcoreRevivePlusClient"
 		]
 	},
 	"mixins": [

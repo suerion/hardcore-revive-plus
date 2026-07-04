@@ -1,4 +1,4 @@
-package net.suerion.hcrplus.client;
+package com.suerion.hcrplus.client;
 
 import net.fabricmc.api.ClientModInitializer;
 

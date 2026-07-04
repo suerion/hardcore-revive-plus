@@ -1,4 +1,4 @@
-package net.suerion.hcrplus.client.mixin;
+package com.suerion.hcrplus.client.mixin;
 
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

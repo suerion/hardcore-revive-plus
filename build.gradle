@@ -11,12 +11,12 @@ base {
 
 tasks.register("datapackmodJar", Zip) {
     group = "build"
-    description = "Builds the Fabric/Quilt mod jar."
+    description = "Builds the Fabric/Quilt datapack-mod jar."
 
     archiveBaseName.set("${project.archives_base_name}-datapackmod")
     archiveVersion.set(project.version.toString())
     archiveExtension.set("jar")
-    destinationDirectory.set(layout.buildDirectory.dir("libs"))
+    destinationDirectory.set(layout.buildDirectory.dir("libs/datapackmod"))
 
     from(".") {
         include "data/**"
@@ -27,16 +27,13 @@ tasks.register("datapackmodJar", Zip) {
         include "README.md"
         include "LICENSE"
     }
+
     from("fabric.mod.json") {
-        expand(
-                version: project.version
-        )
+        expand(version: project.version)
     }
 
     from("quilt.mod.json") {
-        expand(
-                version: project.version
-        )
+        expand(version: project.version)
     }
 }
 
@@ -47,7 +44,7 @@ tasks.register("datapackZip", Zip) {
     archiveBaseName.set("Hardcore Revive+")
     archiveVersion.set(project.version.toString())
     archiveExtension.set("zip")
-    destinationDirectory.set(layout.buildDirectory.dir("distributions"))
+    destinationDirectory.set(layout.buildDirectory.dir("distributions/datapack"))
 
     from(".") {
         include "data/**"
@@ -60,12 +57,12 @@ tasks.register("datapackZip", Zip) {
 
 tasks.register("onlyModJar", Zip) {
     group = "build"
-    description = "Builds the mod jar without the datapack data folder."
+    description = "Builds the experimental standalone mod jar without the datapack data folder. Not intended for public release yet."
 
     archiveBaseName.set("${project.archives_base_name}-mod")
     archiveVersion.set(project.version.toString())
     archiveExtension.set("jar")
-    destinationDirectory.set(layout.buildDirectory.dir("libs"))
+    destinationDirectory.set(layout.buildDirectory.dir("libs/mod"))
 
     from(".") {
         include "META-INF/**"
@@ -78,21 +75,17 @@ tasks.register("onlyModJar", Zip) {
     }
 
     from("fabric.mod.json") {
-        expand(
-                version: project.version
-        )
+        expand(version: project.version)
     }
 
     from("quilt.mod.json") {
-        expand(
-                version: project.version
-        )
+        expand(version: project.version)
     }
 }
 
 tasks.register("buildAll") {
     group = "build"
-    description = "Builds the mod jar, only-mod jar and datapack zip."
+    description = "Builds the datapack-mod jar, standalone mod jar and datapack zip."
 
     dependsOn("datapackmodJar")
     dependsOn("onlyModJar")
