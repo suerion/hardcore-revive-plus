@@ -1,5 +1,6 @@
 # Scores
 scoreboard objectives add deaths deathCount
+scoreboard objectives add hcrplus_vanilla_deaths minecraft.custom:minecraft.deaths
 scoreboard objectives add Lives dummy
 scoreboard objectives add lifeReset dummy
 scoreboard objectives add health health
