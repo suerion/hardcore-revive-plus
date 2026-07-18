@@ -22,6 +22,9 @@ execute as @a[scores={Lives=1},gamemode=!spectator] at @s run function hcrplus:u
 # Finish vanilla auto revive after forced vanilla respawn
 execute as @a[tag=hcrplus_vanilla_respawn,scores={deaths=1..}] at @s run function hcrplus:events/auto_revive_vanilla_finish
 
+# Apply pending ghost spawn from the previous tick
+execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=spectator] at @s run function hcrplus:lives/apply_ghost_spawn
+
 # Detect deaths
 execute as @a[scores={deaths=1..}] at @s run function hcrplus:lives/death
 
