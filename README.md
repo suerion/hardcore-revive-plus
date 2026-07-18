@@ -1,14 +1,45 @@
+## Development Status
+
+Hardcore Revive+ is currently being prepared for Minecraft 26.2 and a future mod-based rewrite.
+The stable public release remains the datapack / datapack-mod version for Minecraft 26.1.2.
+The standalone mod build is experimental and is not intended for public release yet. It is only used for development and testing while the 26.2 update and mod port are still in progress.
+Please do not use the standalone mod build on production servers until it is marked as stable.
+
+---
+
+## Project Status
+
+Hardcore Revive+ was originally created by **StapleTT**.
+Since the original project is no longer actively maintained for newer Minecraft versions, this repository continues development with the goal of preserving and expanding the project while keeping the original datapack concept intact.
+The long-term goal is to support both the original datapack experience and an optional Fabric/Quilt mod that provides features, compatibility, and optimizations that are not possible with a datapack alone.
+The original Discord server remains available for the existing community.
+
 ## Need help? Join our [Discord](https://discord.gg/2698cavvue).
 
-Are you tired of standard Minecraft death mechanics? Maybe dying over and over again just to respawn is too easy, or playing Hardcore mode with one life is too difficult. Hardcore Revive+ solves this problem by adding a highly configurable lives system to your Minecraft world that fits all scenarios.
+For bug reports, feature requests, and development of this continuation, please use the GitHub Issues page:
+
+https://github.com/suerion/hardcore-revive-plus/issues
+
+---
 
 ## Key Features
+
 - Once a player loses all of their lives, they become a ghost. Ghosts are spectators that can generate and load chunks and possess players to grant them buffs.
-- You can revive another fallen player by crafting a **Soul Charm** and dropping it on the ground. Once a ghost touches a Soul Charm, they are revived with a set amount of lives.
-- Players are able to regain lost lives by consuming a **Life Jam**. You can regain as many lives as you want, as long as you do not go over the maximum.
-- When **Auto Revive** is enabled, ghosts can be revived automatically after 10 minutes.
-- When **Lifesteal** is enabled, killing another player grants another life.
-  
+- Revive another fallen player by crafting a **Soul Charm** and dropping it on the ground.
+- Players can regain lost lives by consuming a **Life Jam**.
+- **Auto Revive** can automatically revive ghosts after a configurable amount of time.
+- **Lifesteal** allows players to gain an additional life by defeating another player.
+- Configure where ghosts respawn after losing their final life:
+    - Server Spawn
+    - Nearest Living Player
+    - Vanilla Spawn (Bed / Respawn Anchor)
+    - Death Location
+- Configure where automatically revived players respawn:
+    - Vanilla Spawn
+    - Server Spawn
+    - Death Location
+- Optionally respect the server's current difficulty instead of overriding gameplay behavior.
+
 <details>
 <summary>Soul Charm Recipe</summary>
 
@@ -23,34 +54,75 @@ Are you tired of standard Minecraft death mechanics? Maybe dying over and over a
 
 </details>
 
-## Configuration
-Hardcore Revive+ comes with an expansive and easily accessible settings menu that can be opened using `/trigger _hcrplus_settings`. You will automatically be prompted to configure your preferred settings upon creating your world.
-### Lives
-- **Max Lives** - The amount of lives each player receives. You can choose between 1, 3, or 5 lives.
-- **Name Colors** - If enabled, players' names will be colored according to the amount of lives they have.
-- **Lives in Tab List** - If enabled, the amount of lives each player has will be displayed in the tab list.
-- **Lives on Revival** - The amount of lives each player receives after being revived. You can choose between 1 life, half of max lives, or max lives.
-- **Possession** - When enabled, ghosts can spectate other players to grant them a selection of buffs.
-- **Lifesteal** - When enabled, killing a player grants another life.
-- **Auto Revive** - When enabled, ghosts will automatically be revived after 10 minutes.
-- **Auto Revive Timer** - The amount of time in seconds before a ghost is automatically revived.
+---
 
+## Configuration
+
+Hardcore Revive+ comes with an extensive in-game settings menu that can be opened using:
+
+```mcfunction
+/trigger _hcrplus_settings
+```
+
+New worlds will automatically prompt you to configure your preferred settings.
+
+### Lives
+
+- **Max Lives** – The maximum number of lives each player can have (1, 3 or 5).
+- **Lives on Revival** – The number of lives restored after a successful revival.
+- **Name Colors** – Color player names based on their remaining lives.
+- **Lives in Tab List** – Display remaining lives in the player list.
+- **Possession** – Allow ghosts to possess living players and grant temporary buffs.
+- **Lifesteal** – Killing another player grants an additional life.
+- **Auto Revive** – Automatically revive ghosts after a configurable amount of time.
+- **Auto Revive Timer** – Configure the delay before an automatic revival.
+
+### Ghosts
+
+- **Ghost Spawn Mode** – Choose where ghosts appear after losing their final life.
+    - **Server Spawn** – Respawn at the configured server spawn.
+    - **Nearest Living Player** – Respawn near the closest living player.
+    - **Vanilla Spawn** – Respawn at the player's bed or respawn anchor, otherwise the world spawn.
+    - **Death Location** – Respawn where the player died.
+
+### Revive
+
+- **Auto Revive Spawn Mode** – Choose where automatically revived players respawn.
+    - **Vanilla Spawn** – Bed or respawn anchor, otherwise the world spawn.
+    - **Server Spawn** – Respawn at the configured server spawn.
+    - **Death Location** – Respawn where the player died.
+
+### World
+
+- **Respect Server Difficulty** – Uses the server's current difficulty instead of overriding gameplay behavior.
 
 ### Items
-- **Soul Charm** - When disabled, Soul Charms will no longer be craftable and split into their crafting recipe when dropped.
-- **Life Jam** - When disabled, Life Jams will no longer be craftable and split into their crafting recipe when consumed.
-- **Soul Charm Debuffs** - When enabled, crafting a Soul Charm will grant a selection of debuffs for 5 minutes, and being revived will grant debuffs for 1 minute.
-- **Anounce Revives** - Sends a global message when a player is revived.
+
+- **Soul Charm** – Disable crafting of Soul Charms. Existing charms will split back into their crafting ingredients.
+- **Life Jam** – Disable crafting of Life Jam. Existing items will split back into their crafting ingredients.
+- **Soul Charm Debuffs** – Applies configurable debuffs after crafting a Soul Charm and after being revived.
+- **Announce Revives** – Broadcast a global message whenever a player is revived.
 
 ### Debug Menu
-- **Give Soul Charm**
-- **Give Life Jam**
+
+- Give Soul Charm
+- Give Life Jam
+
+---
 
 ## Incompatibilities
+
 - Vanilla Hardcore mode
-- Any "Unlock all recipes" data pack
+- Any "Unlock all recipes" datapack
 - [Essential Mod](https://modrinth.com/mod/essential)
 - [WorldGameRules](https://modrinth.com/mod/worldgamerules)
 
+---
+
 ## Removal
-Need to uninstall Hardcore Revive+? You can remove all features by executing the command `/function hcrplus:_uninstall` in-game, and then deleting Hardcore Revive+ from either your `datapacks` folder or your `mods` folder.
+To completely remove Hardcore Revive+, execute:
+
+```mcfunction
+/function hcrplus:_uninstall
+```
+Afterwards, remove Hardcore Revive+ from either your `datapacks` folder or your `mods` folder.

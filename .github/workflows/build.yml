@@ -32,7 +32,7 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
-      - name: Build mod jar and datapack zip
+      - name: Build all artifacts
         run: ./gradlew buildAll
 
       - name: Upload build artifacts
@@ -40,5 +40,5 @@ jobs:
         with:
           name: hardcore-revive-plus-build
           path: |
-            build/libs/*.jar
-            build/distributions/*.zip
+            build/libs/**/*.jar
+            build/distributions/**/*.zip
