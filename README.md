@@ -390,32 +390,22 @@ Most mods work without any additional configuration.
 
 ## Gravestone Mods
 
-Some gravestone mods create a gravestone whenever a player dies.
+Hardcore Revive+ intentionally performs a normal vanilla respawn when a Ghost is revived. This ensures that vanilla mechanics such as beds, respawn anchors, spawn points and other respawn-related systems continue to function correctly.
 
-Since Hardcore Revive+ intentionally performs a vanilla death before the player becomes a Ghost, these mods may create an unnecessary gravestone during the transition.
-
-To solve this, a dedicated compatibility project is currently being developed.
+Some gravestone mods hook into Minecraft's death and respawn events. During Hardcore Revive+'s internal vanilla respawn sequence, they may incorrectly create a gravestone even though the player is simply being revived.
 
 ### HCRPlus Compatibility
 
-HCRPlus Compatibility is an optional compatibility mod.
+HCRPlus Compatibility is an optional compatibility mod that prevents supported gravestone mods from creating a gravestone during Hardcore Revive+'s internal vanilla respawn sequence.
 
-Its purpose is very simple:
-
-* detect when Hardcore Revive+ performs the final-life transition
-* prevent supported gravestone mods from creating a gravestone
-* keep inventories completely untouched
-
-The compatibility mod **does not**:
+It does **not**:
 
 * restore inventories
 * transfer inventories
-* move items
+* modify player items
 * replace gravestone mods
 
-Its only purpose is preventing unnecessary gravestone creation during Hardcore Revive+'s final-life transition.
-
-Support for additional gravestone mods will be expanded over time.
+Its only purpose is to prevent supported gravestone mods from creating an unwanted gravestone during Hardcore Revive+'s internal revival sequence.
 
 ---
 
