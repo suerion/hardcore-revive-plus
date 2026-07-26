@@ -1,6 +1,6 @@
 # Finish real vanilla respawn
 scoreboard players set @s deaths 0
-scoreboard players remove @s minecraft.custom:minecraft.deaths 1
+scoreboard players remove @s hcrplus_vanilla_deaths 1
 tag @s remove hcrplus_vanilla_respawn
 gamemode survival @s
 
