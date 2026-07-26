@@ -1,0 +1,65 @@
+name: Feature Request
+description: Suggest a new feature or improvement for Hardcore Revive+
+labels: ["enhancement"]
+
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: |
+        What problem are you trying to solve?
+        Why would this feature be useful for Hardcore Revive+?
+      placeholder: Explain why this feature would be beneficial.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature description
+      description: |
+        Describe your idea in as much detail as possible.
+
+        Include examples of how it should work and, if applicable,
+        how it should interact with existing Hardcore Revive+ features.
+      placeholder: Describe your feature suggestion.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature category
+      description: Which area does your suggestion belong to?
+      options:
+        - Lives
+        - Ghosts
+        - Revive
+        - Auto Revive
+        - Soul Charm
+        - Life Jam
+        - Commands
+        - Configuration
+        - Compatibility
+        - Performance
+        - Documentation
+        - Fabric / Quilt Mod
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: |
+        Have you considered another way to solve this problem?
+        If so, please describe it.
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: |
+        Add any other information, mockups, screenshots, links, or examples that may help explain your idea.

@@ -1,0 +1,135 @@
+name: Bug Report
+description: Report a bug or unexpected behavior in Hardcore Revive+
+labels: ["bug"]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: |
+        A clear and concise description of the issue.
+        Is it a crash, incorrect behavior, or an unexpected result?
+        Screenshots or videos are welcome if they help explain the problem.
+      placeholder: Describe the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Explain how to reproduce the issue.
+      placeholder: |
+        1. Create a new world
+        2. Enable Hardcore Revive+
+        3. Lose your last life
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: |
+        If applicable, please upload your latest.log or server log.
+
+        Please upload the log file directly or use https://mclo.gs and paste the link here.
+
+        Please do not paste large log files directly into the issue.
+      placeholder: https://mclo.gs/
+
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      placeholder: 26.1.2
+    validations:
+      required: true
+
+  - type: input
+    id: mod-loader
+    attributes:
+      label: Platform / Mod Loader
+      description: |
+        Examples:
+        - Datapack only
+        - Fabric 0.19.x
+        - Quilt
+        - NeoForge (via Sinytra)
+      placeholder: Fabric 0.19.3
+    validations:
+      required: true
+
+  - type: input
+    id: hcr-version
+    attributes:
+      label: Hardcore Revive+ version
+      placeholder: 1.8.0+26.1.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: installed-mods
+    attributes:
+      label: Installed mods / datapacks
+      description: |
+        List any relevant mods or datapacks.
+
+        Especially compatibility-related mods such as:
+        - Gravestones
+        - Waystones
+        - Corpse
+        - etc.
+
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system
+      placeholder: Windows 11 / Linux / macOS
+    validations:
+      required: true
+
+  - type: textarea
+    id: other-information
+    attributes:
+      label: Additional information
+      description: |
+        Anything else that may help reproduce or understand the issue.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have verified that the issue occurs with the latest version of Hardcore Revive+.
+          required: true
+
+        - label: I have searched the existing issues and confirmed that this is not a duplicate.
+          required: true
+
+        - label: I have provided enough information to reproduce the issue.
+          required: true
+
+        - label: I have tested whether the issue also occurs with only Hardcore Revive+ installed (if applicable).
+          required: false
+
+        - label: I have attached a log file or explained why no log is available.
+          required: false
