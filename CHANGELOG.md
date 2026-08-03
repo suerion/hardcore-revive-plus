@@ -2,114 +2,13 @@
 
 **Branch:** `upgrade-to-26.x-and-mod-port`
 
+**Changes since:** `1.11.6+26.1.2`
+
 > This file is generated automatically from commits.
 > The official release notes are maintained manually in `CHANGELOG_RELEASE.md`.
 
 ## Unreleased
 
-- [53e05e8](https://github.com/suerion/hardcore-revive-plus/commit/53e05e81fff2223b19637858fe45b986b2ee966c) initial commit for v1.8.8
-- [67b7bf4](https://github.com/suerion/hardcore-revive-plus/commit/67b7bf46bcb7b616bfdc27ad9b064e9198e55e53) Add README.md
-- [55b9917](https://github.com/suerion/hardcore-revive-plus/commit/55b99177bd9083aa3b6d010bf2f19e411eb4b3b0) add global final death message & ghost proximity alerts
-- [0a4177b](https://github.com/suerion/hardcore-revive-plus/commit/0a4177b9ff0a4fe79916371e2cd64abf83524ced) add global final death message & ghost proximity alerts
-- [11adb0f](https://github.com/suerion/hardcore-revive-plus/commit/11adb0fa55e3c0412cf7123fb67ba1ded3350f3c) extend ghost alert cooldown & proximity, fix settings toggles setting lives for ghosts
-- [5579848](https://github.com/suerion/hardcore-revive-plus/commit/55798488e002f6a92ae9f1372d0a95ea88f9c220) vscode still being ridiculous
-- [28adadc](https://github.com/suerion/hardcore-revive-plus/commit/28adadcb5b127da15e5a6bfaecb5e01682faa6a5) v1.10 update, check Modrinth changelogs
-- [6cd27bb](https://github.com/suerion/hardcore-revive-plus/commit/6cd27bbcbb26dd6cd55f2aacfc18ee2b2ec7b0fe) update to minecraft 26,1
-- [5cc66ba](https://github.com/suerion/hardcore-revive-plus/commit/5cc66ba09875b3c437b6a13363369315ae5a23e0) update for 1.21.11-26.1.2
-- [9210443](https://github.com/suerion/hardcore-revive-plus/commit/92104437198b9ab3865f7fb91bf952a0dafb1c36) Update item execution commands for Soul Charms
-- [f4bf53b](https://github.com/suerion/hardcore-revive-plus/commit/f4bf53ba0da777585a61337a8ec3ac35f8d364f5) Fix item execution logic in revive.mcfunction
-- [3d9806f](https://github.com/suerion/hardcore-revive-plus/commit/3d9806f26f47e0e6149e68a68a0dd63d964fa3f7) Add spectator mode for players with no lives
-- [a84ab19](https://github.com/suerion/hardcore-revive-plus/commit/a84ab1924d950929e8430a68017e13a34cdad610) Update version from v1.10.2 to v1.10.3
-- [9c76c2e](https://github.com/suerion/hardcore-revive-plus/commit/9c76c2e26babc80c9d1856fb3a70bf61e4d31463) Delete data/hcrplus/.DS_Store
-- [a105cca](https://github.com/suerion/hardcore-revive-plus/commit/a105cca911bc343547927ad343cc88c5229a22da) Delete data/hcrplus/function/.DS_Store
-- [e09ece8](https://github.com/suerion/hardcore-revive-plus/commit/e09ece82ca926ee4747e6c59f92992b1c25f971a) Remove spectator mode execution for players with no lives
-- [b73ff64](https://github.com/suerion/hardcore-revive-plus/commit/b73ff648a6f1a03205432ce4451f35d6581f5479) add mod files
-- [1c879b4](https://github.com/suerion/hardcore-revive-plus/commit/1c879b45ba7c5e7e09b4b7d75e2a13e613d7e9ae) hcr+ png
-- [0f5f26e](https://github.com/suerion/hardcore-revive-plus/commit/0f5f26ed0129e24ff9c19f6efa8f84181b620c3b) add gradle settings
-- [74ca62c](https://github.com/suerion/hardcore-revive-plus/commit/74ca62c91a2cc1f30bc50dfff832987c95f0084c) Add build.gradle for mod and datapack tasks
-- [98ca8dc](https://github.com/suerion/hardcore-revive-plus/commit/98ca8dc0deaeda361e99634612f4b1b8c5f5aa95) Add gradle.properties for project configuration
-- [e303ec1](https://github.com/suerion/hardcore-revive-plus/commit/e303ec1a48a52df16797880dad77e2c85957ab82) Add datapack_base_name to gradle.properties
-- [6f9f2f1](https://github.com/suerion/hardcore-revive-plus/commit/6f9f2f145d932b2162fefe211f2b5f2483208f3d) Add buildAll task and update assemble dependencies
-- [3fcbc69](https://github.com/suerion/hardcore-revive-plus/commit/3fcbc691da49b4d3b3157de9bc011fd2611f5899) Add Gradle wrapper
-- [539518f](https://github.com/suerion/hardcore-revive-plus/commit/539518f3f17bdd244bbeff690dccaac5c84afe22) Ignore build outputs
-- [b091caf](https://github.com/suerion/hardcore-revive-plus/commit/b091caf94a500f1b447d8a4baccdc1732fbb88a3) Add GitHub Actions workflow for building project
-- [26ee3d2](https://github.com/suerion/hardcore-revive-plus/commit/26ee3d2595be614b54882d57fbb508136a5bb495) Update version to 1.10.3 in fabric.mod.json
-- [8f2f6c6](https://github.com/suerion/hardcore-revive-plus/commit/8f2f6c68ef43afcf0e0d012b3df0055c6db3ffe3) Update version format in fabric.mod.json
-- [83c4eec](https://github.com/suerion/hardcore-revive-plus/commit/83c4eecff1c61d2690c7d195fa2f22c34ab6820e) Update authors in fabric.mod.json
-- [179346c](https://github.com/suerion/hardcore-revive-plus/commit/179346ca749f9a2abb15b5ac126d58d65c303e78) Include fabric.mod.json and quilt.mod.json with version
-- [d4ac985](https://github.com/suerion/hardcore-revive-plus/commit/d4ac985a7757516fe5c6088ff3b23d164ce0bda8) Update version and contributors formatting in quilt.mod.json
-- [f4e55df](https://github.com/suerion/hardcore-revive-plus/commit/f4e55dff466a82483690f606ed76d3031c53a9a4) Add hcrplus_difficulty_mode scoreboard objective
-- [1691dca](https://github.com/suerion/hardcore-revive-plus/commit/1691dca9d075aa7435b906e041399a4d7ad73cb4) Add difficulty mode configuration to defaults.mcfunction
-- [a5c9823](https://github.com/suerion/hardcore-revive-plus/commit/a5c9823a8da1e0514eb73f94fb63dff329ceb802) Add new scoreboard objectives for difficulty settings
-- [6707c2c](https://github.com/suerion/hardcore-revive-plus/commit/6707c2c24df9c326caeae0222a1d5182961a8b87) Fix scoreboard command formatting in defaults.mcfunction
-- [40d2f39](https://github.com/suerion/hardcore-revive-plus/commit/40d2f399716c4e551894192b3a01f011e2f16d81) Add apply_difficulty function for game difficulty settings
-- [8554653](https://github.com/suerion/hardcore-revive-plus/commit/85546537d8231a53c4a564cf39100fd9b945c317) Add difficulty settings menu functionality
-- [9a1198a](https://github.com/suerion/hardcore-revive-plus/commit/9a1198abec112b57792ee78016626dcb28242429) Add respect toggle to difficulty settings
-- [0cab786](https://github.com/suerion/hardcore-revive-plus/commit/0cab786a83fe9f8da13128443c0f404cbc835f79) Add easy difficulty toggle functionality
-- [e1aba15](https://github.com/suerion/hardcore-revive-plus/commit/e1aba156e0bfc022a266ebed6e9506537a3a6409) Add normal difficulty toggle functionality
-- [278f7df](https://github.com/suerion/hardcore-revive-plus/commit/278f7df2af836291cbbed7ada68672d25c1cbff7) Add hard difficulty toggle functionality
-- [61b3dfb](https://github.com/suerion/hardcore-revive-plus/commit/61b3dfb599bb3b01e897f183b618f56dc9695064) Implement difficulty settings in trigger_handler
-- [7d897a0](https://github.com/suerion/hardcore-revive-plus/commit/7d897a06b63cf1196cc817c45541e3b782ba4c33) Enhance settings menu with new options
-- [cc4a805](https://github.com/suerion/hardcore-revive-plus/commit/cc4a8051ce1896df26c78c3356c2ede18e2e34fd) Update mod version to 1.10.4
-- [57d190d](https://github.com/suerion/hardcore-revive-plus/commit/57d190d939728185b372ea2212369ced34450086) Update mod version to use variable reference
-- [5678610](https://github.com/suerion/hardcore-revive-plus/commit/567861090f669660be2df47d7ff0330067ccaf55) Update neoforge.mods.toml
-- [de13cd0](https://github.com/suerion/hardcore-revive-plus/commit/de13cd055d5fd48d22c6436eab8d6a01734d9e31) Enable difficulty-related scoreboards for players
-- [e99e0c8](https://github.com/suerion/hardcore-revive-plus/commit/e99e0c86221d7393cb12c3a311dfe53feb120534) Update version from v1.10.3 to v1.10.4
-- [4134c8b](https://github.com/suerion/hardcore-revive-plus/commit/4134c8b4f715cbf90bb7cf8daaa590158f6c90b3) fixe menu issue, because tellraw is not multiline compatible
-- [34876f4](https://github.com/suerion/hardcore-revive-plus/commit/34876f47071c583e097d7c2806c06b5e024e29e3) fix difficultymode is blank
-- [4abdd57](https://github.com/suerion/hardcore-revive-plus/commit/4abdd57109766093fb77e66c330583b06c4fc1a4) Update difficulty settings in page1.mcfunction
-- [8e2f1c7](https://github.com/suerion/hardcore-revive-plus/commit/8e2f1c7da9503faad0cc3917104130f01f6067d2) Remove spawnpoint commands for out of lives
-- [078b198](https://github.com/suerion/hardcore-revive-plus/commit/078b1985e4590c4fd0c88726864ccedf5ddf0047) Add new scoreboard objectives for ghost spawning
-- [fc20423](https://github.com/suerion/hardcore-revive-plus/commit/fc2042390753b7043a3a70613c210037c20a8c8a) Rename ghost spawn objectives to spawn objectives
-- [b6dfb2b](https://github.com/suerion/hardcore-revive-plus/commit/b6dfb2bb1a86deace943e5557708b10d06ba15ac) Add spawn mode settings to defaults.mcfunction
-- [e2d8b56](https://github.com/suerion/hardcore-revive-plus/commit/e2d8b567eab0961cc3cbb10d1a5e45d8985ce456) Implement spawn mode settings in trigger_handler
-- [3a09bae](https://github.com/suerion/hardcore-revive-plus/commit/3a09baec5bd4fa82357072f0bb379687b9f07be4) Create page1.mcfunction
-- [16eaa1e](https://github.com/suerion/hardcore-revive-plus/commit/16eaa1e5ea37171c9e5e8bca2161e7a04b99a04e) Create world.mcfunction
-- [c44253c](https://github.com/suerion/hardcore-revive-plus/commit/c44253c70908b8f4dc93e4164f1b060247bfe666) Create death.mcfunction
-- [d89e92f](https://github.com/suerion/hardcore-revive-plus/commit/d89e92f9d63ffcb4ed64b756f80191447acc12e1) Create nearest.mcfunction
-- [a7e5539](https://github.com/suerion/hardcore-revive-plus/commit/a7e5539c03930583f38b46c9cfae243735fd19fb) Create bed.mcfunction
-- [d212252](https://github.com/suerion/hardcore-revive-plus/commit/d2122526cd8968269241247d7faa5d453baa6043) Add spawn mode selection and feedback messages
-- [4f859c8](https://github.com/suerion/hardcore-revive-plus/commit/4f859c89b32fadc1601e1f27aae37c22508b234c) Move spawn toggle functions to right folder
-- [46f1a68](https://github.com/suerion/hardcore-revive-plus/commit/46f1a68e8347e63b16d711f340414b908601bab7) Add spawn mode settings framework
-- [1110a19](https://github.com/suerion/hardcore-revive-plus/commit/1110a19cf24693140b71887180bde62c6cf934c8) Add worldspawn marker
-- [4b5232c](https://github.com/suerion/hardcore-revive-plus/commit/4b5232c72c284f3b45b2a22d845a130f1f34692a) Rethink worldspawn
-- [342f5c9](https://github.com/suerion/hardcore-revive-plus/commit/342f5c91eaa290d12f3946974d098c7f9397cf26) Simplify ghost and revive spawn settings
-- [49dc35d](https://github.com/suerion/hardcore-revive-plus/commit/49dc35d055329509d9e254d9c491914caca92b80) Add configurable ghost and auto revive spawn modes
-- [cc39aed](https://github.com/suerion/hardcore-revive-plus/commit/cc39aed3e4d6ec1e86bc790592621887ac5eb911) Change Workflow only with version push
-- [b93dea9](https://github.com/suerion/hardcore-revive-plus/commit/b93dea9796bf4e894f7da3f07cddd438ca90a967) add id for death position
-- [acfbe8c](https://github.com/suerion/hardcore-revive-plus/commit/acfbe8cc4e7d34287bc79cfcad15a340a7ad7de5) fixed auto revive with id and deathpoint marker
-- [b2602cc](https://github.com/suerion/hardcore-revive-plus/commit/b2602cc8fe9bf3a3645a2a657ba58861d69b4354) add new remove marker function
-- [f184708](https://github.com/suerion/hardcore-revive-plus/commit/f184708611b3b37c944fecdbaf7dbf21fa655f0c) Add configurable server spawn marker and last life marker
-- [d444a48](https://github.com/suerion/hardcore-revive-plus/commit/d444a480562c9934e6e0ab671adb270206a4f99a) Use server spawn marker for spawn modes
-- [f5732cd](https://github.com/suerion/hardcore-revive-plus/commit/f5732cdd79f999701fc5ae94e9e05bd9a6a530c5) Add configurable spawn system and server spawn marker and release 1.11.2
-- [d06b0f9](https://github.com/suerion/hardcore-revive-plus/commit/d06b0f9bc98af547ffe09e99b707b5ce4f836b07) Fix UI and release 1.11.3
-- [dc01a89](https://github.com/suerion/hardcore-revive-plus/commit/dc01a89ff1eb8f1be1f44432495652c80adec30f) Implement vanilla auto revive flow
-- [868823a](https://github.com/suerion/hardcore-revive-plus/commit/868823a2c6a056a14182b722bada90914c5e9cf9) Push version
-- [1932bd0](https://github.com/suerion/hardcore-revive-plus/commit/1932bd0f23a8090154f19eb9790dff58dcdafc11) Add debug output for ghost spawn logic
-- [ccb9e15](https://github.com/suerion/hardcore-revive-plus/commit/ccb9e15d2b7a489b88f5eab62f6b2c11ca66db49) only create structure to modport and update 26.x
-- [cc943f4](https://github.com/suerion/hardcore-revive-plus/commit/cc943f4564f6d4546254baff5235570c5d9dc165) added fabric mod template
-- [f96366f](https://github.com/suerion/hardcore-revive-plus/commit/f96366f0828cea8e029d9ad0c75939d2a92ba41a) added fabric template and added some informations for modport
-- [fe25e90](https://github.com/suerion/hardcore-revive-plus/commit/fe25e9077f79240260ca26f2ed283f06518660f3) added fabric template and added some informations for modport
-- [3cb1b47](https://github.com/suerion/hardcore-revive-plus/commit/3cb1b4715a814a7f6bf5fd177d9901343d9b51e5) updated the README.md
-- [14a7c4b](https://github.com/suerion/hardcore-revive-plus/commit/14a7c4b94178d88d45be2255388f21b2281b48c3) updated the README.md
-- [475028e](https://github.com/suerion/hardcore-revive-plus/commit/475028ea8ff59e85afe1de4328466a4a407aa6b3) add github issues templates
-- [0adc379](https://github.com/suerion/hardcore-revive-plus/commit/0adc3792e2bc7b0f6b947d172a2aaef2276f6844) update build gradle for more folders and different builds
-- [abcb156](https://github.com/suerion/hardcore-revive-plus/commit/abcb1568e2514838db0c803b459b4ea3e5f2fea0) Reset death count on vanilla respawn finish
-- [3b6cbcc](https://github.com/suerion/hardcore-revive-plus/commit/3b6cbcc5e4669c8e89db23bcbfaad0e88451207c) Fix formatting in death.mcfunction
-- [d219d99](https://github.com/suerion/hardcore-revive-plus/commit/d219d996a59f38fa2ff3b95cf64a95eb4b6f87ee) Implement ghost spawn logic with multiple modes
-- [4f1fed2](https://github.com/suerion/hardcore-revive-plus/commit/4f1fed2e23908669a7a9c16d6d79d918098d31cd) Refactor ghost spawn and respawn mechanics
-- [010fb40](https://github.com/suerion/hardcore-revive-plus/commit/010fb40f9b317d68f3b9817c373cdabc22247f56) Implement pending ghost spawn execution
-- [cc9af09](https://github.com/suerion/hardcore-revive-plus/commit/cc9af0930c56bcb1e82f850d4c64272a47dbbdbf) Update version from v1.11.4 to v1.11.5
-- [e641dd9](https://github.com/suerion/hardcore-revive-plus/commit/e641dd97ce7057014f6deaad11c5e30f82c722ab) Update mod_version to 1.11.5
-- [a594d27](https://github.com/suerion/hardcore-revive-plus/commit/a594d27ecab36d38ec4249fe060c2897435944a0) Add scoreboard objective for vanilla deaths
-- [edc4b9b](https://github.com/suerion/hardcore-revive-plus/commit/edc4b9b5ac7d6651505bd26119f30ccd660ced02) Update death tracking for vanilla respawn function
-- [d4f0abf](https://github.com/suerion/hardcore-revive-plus/commit/d4f0abf50ae1fac9416ea2dd59bb125cc57c69fc) Refactor spawn settings messages and commands
-- [dee7e35](https://github.com/suerion/hardcore-revive-plus/commit/dee7e356da44f22b11eee40370c1f4864b868e66) Enhance spawn settings display and commands
-- [626f1ec](https://github.com/suerion/hardcore-revive-plus/commit/626f1ec2b4764dfb51601e53b5c289a7252d4268) Refactor spawn menu messages and commands
-- [1141179](https://github.com/suerion/hardcore-revive-plus/commit/11411791789792a5e788b8809a49acf7115f170e) Update spawn menu messages and commands
-- [32f7e49](https://github.com/suerion/hardcore-revive-plus/commit/32f7e49df06cffed61f2285974602b4b8bf6c529) Update version from v1.11.5 to v1.11.6
-- [b1a86e6](https://github.com/suerion/hardcore-revive-plus/commit/b1a86e6d6ebddc794eb493ccbff5b0122ae2e5f7) Update mod version to 1.11.6
-- [85d9e5d](https://github.com/suerion/hardcore-revive-plus/commit/85d9e5db0d811752a9f38955f5d6726f6c1c8c42) update the readme for releases
-- [b97dade](https://github.com/suerion/hardcore-revive-plus/commit/b97dadeb17aee70e2fb9f34e74ed5204494b910e) Update README for Hardcore Revive gravestone compatibility
 - [8c28eff](https://github.com/suerion/hardcore-revive-plus/commit/8c28eff321f030d068bf49bacc8df4d28d3d73c2) Improve build and release automation
 - [068a477](https://github.com/suerion/hardcore-revive-plus/commit/068a4776eed1d3de1c3c02a6d7847db294c849f7) fix changelog not creating
+- [636ec33](https://github.com/suerion/hardcore-revive-plus/commit/636ec33bf37993b61609e4bdf12b14b20eeb4e8c) adding the fetch tag list, to get not the complete
