@@ -12,3 +12,4 @@
 - [8c28eff](https://github.com/suerion/hardcore-revive-plus/commit/8c28eff321f030d068bf49bacc8df4d28d3d73c2) Improve build and release automation
 - [068a477](https://github.com/suerion/hardcore-revive-plus/commit/068a4776eed1d3de1c3c02a6d7847db294c849f7) fix changelog not creating
 - [636ec33](https://github.com/suerion/hardcore-revive-plus/commit/636ec33bf37993b61609e4bdf12b14b20eeb4e8c) adding the fetch tag list, to get not the complete
+- [2729d7c](https://github.com/suerion/hardcore-revive-plus/commit/2729d7c0415490867e40f74ad1c9b102287a2956) updatet the build workflow for supported versions,
