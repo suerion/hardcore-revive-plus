@@ -16,3 +16,4 @@
 - [a0c558a](https://github.com/suerion/hardcore-revive-plus/commit/a0c558a55cb7ff42724682317d7131452d0afd65) update release workflow, to check to the old tag, not to the old commit for release.... add dev-build workflow, check manual workflow not on master
 - [7b820fa](https://github.com/suerion/hardcore-revive-plus/commit/7b820fada43c9ca438031674253cf556b2328810) update dev build creation
 - [08cd5ef](https://github.com/suerion/hardcore-revive-plus/commit/08cd5ef4fcf0079aef02e96cfc606d075c0f186c) release only for 26.2 because entity predicate is renamed
+- [adb03a0](https://github.com/suerion/hardcore-revive-plus/commit/adb03a0e232cf6eaa30958449fe47eac9769de66) fix chunkloading from hcr spawn marker
