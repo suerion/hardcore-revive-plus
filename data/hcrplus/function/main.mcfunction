@@ -22,15 +22,20 @@ execute as @a[scores={Lives=1},gamemode=!spectator] at @s run function hcrplus:u
 # Finish vanilla auto revive after forced vanilla respawn
 execute as @a[tag=hcrplus_vanilla_respawn,scores={deaths=1..}] at @s run function hcrplus:events/auto_revive_vanilla_finish
 
-# Apply pending ghost spawn from the previous tick
-execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=spectator] at @s run function hcrplus:lives/apply_ghost_spawn
-
-# Detect deaths
+# Detect deaths and mark players waiting for their real vanilla respawn
 execute as @a[scores={deaths=1..}] at @s run function hcrplus:lives/death
 
-# Keep ghosts in spectator after server restart or force-gamemode
-execute as @a[scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
+# Convert the player into a ghost only after leaving the death screen
+execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=!spectator,nbt={DeathTime:0s}] run gamemode spectator @s
 
+# Apply the selected ghost spawn after the real vanilla respawn
+execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=spectator,nbt={DeathTime:0s}] at @s run function hcrplus:lives/apply_ghost_spawn
+
+# Keep established ghosts in spectator after restart or force-gamemode
+# Pending players are excluded until their real vanilla respawn is complete
+execute as @a[tag=!hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
+
+# Handle normal respawns for players who still have lives
 execute as @a[scores={Lives=1..,respawn=1},gamemode=spectator] run function hcrplus:lives/respawn
 
 # Check for Life Jam uses

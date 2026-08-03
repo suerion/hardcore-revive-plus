@@ -22,8 +22,7 @@ execute if score @s Lives matches 0 at @e[type=minecraft:marker,tag=hcrplus_last
 tag @e[type=minecraft:marker,tag=hcrplus_last_alive_location_match] remove hcrplus_last_alive_location_match
 tag @s remove hcrplus_dying_player
 
-# Set spectator and apply ghost spawn during the next tick
-execute if score @s Lives matches 0 run gamemode spectator @s
+# Wait for the real vanilla respawn before applying the ghost state
 execute if score @s Lives matches 0 run tag @s add hcrplus_pending_ghost_spawn
 
 # Broadcast to all players when someone runs out of lives
