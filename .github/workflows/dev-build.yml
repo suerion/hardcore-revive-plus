@@ -58,10 +58,21 @@ jobs:
 
           echo "full_version=${MOD_VERSION}+${MINECRAFT_VERSION}" >> "$GITHUB_OUTPUT"
 
+      - name: Read commit hash
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          SHORT_SHA=$(git rev-parse --short HEAD)
+
+          echo "short_sha=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+          echo "Commit: ${SHORT_SHA}"
+
       - name: Upload development artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: hardcore-revive-plus-dev-${{ steps.version.outputs.full_version }}-${{ github.run_number }}
+          name: hardcore-revive-plus-dev-${{ steps.version.outputs.full_version }}-${{ steps.commit.outputs.short_sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
