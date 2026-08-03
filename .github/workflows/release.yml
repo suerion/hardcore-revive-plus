@@ -1,0 +1,253 @@
+name: Release HCR+
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "gradle.properties"
+      - "CHANGELOG_RELEASE.md"
+      - "pack.mcmeta"
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Validate Release
+    runs-on: ubuntu-latest
+
+    outputs:
+      previous_tag: ${{ steps.release.outputs.previous_tag }}
+      mod_version: ${{ steps.release.outputs.mod_version }}
+      minecraft_version: ${{ steps.release.outputs.minecraft_version }}
+      supported_minecraft_versions: ${{ steps.release.outputs.supported_minecraft_versions }}
+      full_version: ${{ steps.release.outputs.full_version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Fetch release tags
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin --force --tags
+
+      - name: Validate release changes
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PREVIOUS_TAG=$(
+            git describe \
+              --tags \
+              --abbrev=0 \
+              --match '*+*' \
+              HEAD 2>/dev/null || true
+          )
+
+          if [[ -z "$PREVIOUS_TAG" ]]; then
+            echo "No previous release tag could be found."
+            exit 1
+          fi
+
+          echo "Previous release tag: $PREVIOUS_TAG"
+
+          CHANGED_FILES=$(git diff --name-only "${PREVIOUS_TAG}" HEAD)
+
+          echo "Files changed since ${PREVIOUS_TAG}:"
+          echo "$CHANGED_FILES"
+
+          if ! grep -Fxq "gradle.properties" <<< "$CHANGED_FILES"; then
+            echo "gradle.properties has not changed since ${PREVIOUS_TAG}."
+            exit 1
+          fi
+
+          if ! grep -Fxq "pack.mcmeta" <<< "$CHANGED_FILES"; then
+            echo "pack.mcmeta has not changed since ${PREVIOUS_TAG}."
+            exit 1
+          fi
+
+          if ! grep -Fxq "CHANGELOG_RELEASE.md" <<< "$CHANGED_FILES"; then
+            echo "CHANGELOG_RELEASE.md has not changed since ${PREVIOUS_TAG}."
+            exit 1
+          fi
+
+          MOD_VERSION=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2-)
+          MINECRAFT_VERSION=$(grep '^minecraft_version=' gradle.properties | cut -d'=' -f2-)
+          SUPPORTED_MINECRAFT_VERSIONS=$(grep '^supported_minecraft_versions=' gradle.properties | cut -d'=' -f2-)
+
+          PREVIOUS_MOD_VERSION=$(
+            git show "${PREVIOUS_TAG}:gradle.properties" |
+            grep '^mod_version=' |
+            cut -d'=' -f2-
+          )
+
+          if [[ -z "$MOD_VERSION" ]]; then
+            echo "mod_version is missing from gradle.properties."
+            exit 1
+          fi
+
+          if [[ -z "$MINECRAFT_VERSION" ]]; then
+            echo "minecraft_version is missing from gradle.properties."
+            exit 1
+          fi
+
+          if [[ -z "$SUPPORTED_MINECRAFT_VERSIONS" ]]; then
+            echo "supported_minecraft_versions is missing from gradle.properties."
+            exit 1
+          fi
+
+          if [[ "$MOD_VERSION" == "$PREVIOUS_MOD_VERSION" ]]; then
+            echo "mod_version is still ${MOD_VERSION}."
+            echo "Increase mod_version before publishing."
+            exit 1
+          fi
+
+          if [[ ! -s CHANGELOG_RELEASE.md ]]; then
+            echo "CHANGELOG_RELEASE.md is missing or empty."
+            exit 1
+          fi
+
+          if ! grep -Eq \
+            '^[[:space:]]*[-*][[:space:]]+[^[:space:]]' \
+            CHANGELOG_RELEASE.md; then
+
+            echo "CHANGELOG_RELEASE.md does not contain a release entry."
+            exit 1
+          fi
+
+          FULL_VERSION="${MOD_VERSION}+${MINECRAFT_VERSION}"
+
+          echo "previous_tag=$PREVIOUS_TAG" >> "$GITHUB_OUTPUT"
+          echo "mod_version=$MOD_VERSION" >> "$GITHUB_OUTPUT"
+          echo "minecraft_version=$MINECRAFT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "supported_minecraft_versions=$SUPPORTED_MINECRAFT_VERSIONS" >> "$GITHUB_OUTPUT"
+          echo "full_version=$FULL_VERSION" >> "$GITHUB_OUTPUT"
+
+          echo "Previous mod version: $PREVIOUS_MOD_VERSION"
+          echo "New release version: $FULL_VERSION"
+
+  release:
+    name: Build and Publish HCR+
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Build public release artifacts
+        run: ./gradlew buildRelease
+
+      - name: Verify release artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -n "$(find build/libs/datapackmod -maxdepth 1 -name '*.jar' -print -quit)"
+          test -n "$(find build/distributions/datapack -maxdepth 1 -name '*.zip' -print -quit)"
+
+      - name: Prepare supported Minecraft versions
+        id: supported-versions
+        shell: bash
+        env:
+          SUPPORTED_VERSIONS: ${{ needs.validate.outputs.supported_minecraft_versions }}
+        run: |
+          set -euo pipefail
+
+          {
+            echo "versions<<EOF"
+            echo "$SUPPORTED_VERSIONS" |
+              tr ',' '\n' |
+              sed 's/^[[:space:]]*//;s/[[:space:]]*$//' |
+              sed '/^$/d'
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Supported Minecraft versions:"
+          echo "$SUPPORTED_VERSIONS" | tr ',' '\n'
+
+      - name: Check existing release tag
+        shell: bash
+        env:
+          TAG_NAME: ${{ needs.validate.outputs.full_version }}
+        run: |
+          set -euo pipefail
+
+          if git ls-remote \
+            --exit-code \
+            --tags \
+            origin \
+            "refs/tags/${TAG_NAME}" > /dev/null 2>&1; then
+
+            echo "The tag ${TAG_NAME} already exists."
+            exit 1
+          fi
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: hardcore-revive-plus-${{ needs.validate.outputs.full_version }}
+          if-no-files-found: error
+          path: |
+            build/libs/datapackmod/*.jar
+            build/distributions/datapack/*.zip
+
+      - name: Publish to Modrinth and GitHub
+        uses: Kira-NT/mc-publish@v3
+        with:
+          modrinth-id: Huz7HM6Q
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-tag: ${{ needs.validate.outputs.full_version }}
+          github-commitish: ${{ github.sha }}
+          github-generate-changelog: false
+          github-draft: false
+          github-prerelease: false
+
+          name: Hardcore Revive+ v${{ needs.validate.outputs.mod_version }}
+          version: ${{ needs.validate.outputs.full_version }}
+          version-type: release
+
+          changelog-file: CHANGELOG_RELEASE.md
+
+          files: |
+            build/libs/datapackmod/*.jar
+            build/distributions/datapack/*.zip
+
+          game-versions: |
+            ${{ steps.supported-versions.outputs.versions }}
+
+          game-version-filter: none
+
+          loaders: |
+            datapack
+            fabric
+            quilt
+            neoforge
+
+          fail-mode: fail
+          retry-attempts: 3
+          retry-delay: 10000

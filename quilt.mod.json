@@ -8,11 +8,15 @@
       "name": "Hardcore Revive+",
       "description": "A highly configurable data pack that lets you revive your friends in Hardcore mode.",
       "contributors": {
-        "StapleTT": "Member"
+        "StapleTT": "Original Author",
+        "Suerion": "Maintainer"
       },
       "contact": {
-        "homepage": "https://modrinth.com/datapack/hardcore-revive-plus"
+        "homepage": "https://modrinth.com/project/Huz7HM6Q",
+        "sources": "https://github.com/suerion/hardcore-revive-plus",
+        "issues": "https://github.com/suerion/hardcore-revive-plus/issues"
       },
+      "license": "Apache-2.0",
       "icon": "hardcore-revive-plus_pack.png"
     },
     "intermediate_mappings": "net.fabricmc:intermediary",

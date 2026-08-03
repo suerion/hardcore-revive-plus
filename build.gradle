@@ -9,9 +9,14 @@ base {
     archivesName = project.archives_base_name
 }
 
+tasks.withType(Zip).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
 tasks.register("datapackmodJar", Zip) {
     group = "build"
-    description = "Builds the Fabric/Quilt datapack-mod jar."
+    description = "Builds the Fabric, Quilt and NeoForge datapack-mod jar."
 
     archiveBaseName.set("${project.archives_base_name}-datapackmod")
     archiveVersion.set(project.version.toString())
@@ -20,12 +25,17 @@ tasks.register("datapackmodJar", Zip) {
 
     from(".") {
         include "data/**"
-        include "META-INF/**"
         include "pack.mcmeta"
         include "pack.png"
         include "hardcore-revive-plus_pack.png"
         include "README.md"
         include "LICENSE"
+    }
+
+    from("META-INF") {
+        into("META-INF")
+        include "*.toml"
+        expand(version: project.version)
     }
 
     from("fabric.mod.json") {
@@ -41,7 +51,7 @@ tasks.register("datapackZip", Zip) {
     group = "build"
     description = "Builds the datapack zip."
 
-    archiveBaseName.set("Hardcore Revive+")
+    archiveBaseName.set(project.datapack_base_name)
     archiveVersion.set(project.version.toString())
     archiveExtension.set("zip")
     destinationDirectory.set(layout.buildDirectory.dir("distributions/datapack"))
@@ -65,13 +75,18 @@ tasks.register("onlyModJar", Zip) {
     destinationDirectory.set(layout.buildDirectory.dir("libs/mod"))
 
     from(".") {
-        include "META-INF/**"
         include "pack.mcmeta"
         include "pack.png"
         include "hardcore-revive-plus_pack.png"
         include "README.md"
         include "LICENSE"
         include "src/**"
+    }
+
+    from("META-INF") {
+        into("META-INF")
+        include "*.toml"
+        expand(version: project.version)
     }
 
     from("fabric.mod.json") {
@@ -83,17 +98,22 @@ tasks.register("onlyModJar", Zip) {
     }
 }
 
-tasks.register("buildAll") {
+tasks.register("buildRelease") {
     group = "build"
-    description = "Builds the datapack-mod jar, standalone mod jar and datapack zip."
+    description = "Builds only the public datapack and datapack-mod release artifacts."
 
     dependsOn("datapackmodJar")
-    dependsOn("onlyModJar")
     dependsOn("datapackZip")
 }
 
-tasks.named("assemble") {
-    dependsOn("datapackmodJar")
+tasks.register("buildAll") {
+    group = "build"
+    description = "Builds all public and experimental artifacts."
+
+    dependsOn("buildRelease")
     dependsOn("onlyModJar")
-    dependsOn("datapackZip")
+}
+
+tasks.named("assemble") {
+    dependsOn("buildAll")
 }

@@ -1,0 +1,80 @@
+name: Build HCR+ Development
+
+on:
+  push:
+    branches-ignore:
+      - master
+    paths-ignore:
+      - "CHANGELOG.md"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Development Artifacts
+
+    if: github.ref != 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Java 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Build public artifacts
+        run: ./gradlew buildRelease
+
+      - name: Verify build artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -n "$(find build/libs/datapackmod -maxdepth 1 -name '*.jar' -print -quit)"
+          test -n "$(find build/distributions/datapack -maxdepth 1 -name '*.zip' -print -quit)"
+
+      - name: Read project version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          MOD_VERSION=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2-)
+          MINECRAFT_VERSION=$(grep '^minecraft_version=' gradle.properties | cut -d'=' -f2-)
+
+          echo "full_version=${MOD_VERSION}+${MINECRAFT_VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Read commit hash
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          SHORT_SHA=$(git rev-parse --short HEAD)
+
+          echo "short_sha=${SHORT_SHA}" >> "$GITHUB_OUTPUT"
+          echo "Commit: ${SHORT_SHA}"
+
+      - name: Upload development artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: hardcore-revive-plus-dev-${{ steps.version.outputs.full_version }}-${{ steps.commit.outputs.short_sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            build/libs/datapackmod/*.jar
+            build/distributions/datapack/*.zip
