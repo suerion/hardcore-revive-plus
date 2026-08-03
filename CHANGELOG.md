@@ -1,6 +1,6 @@
 # Development Changelog
 
-**Branch:** `downgrade-to-26.1.2-from-26.2`
+**Branch:** `26.1.2`
 
 **Changes since:** `1.11.6+26.1.2`
 
