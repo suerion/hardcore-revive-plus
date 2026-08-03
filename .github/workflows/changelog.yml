@@ -7,6 +7,8 @@ on:
     paths-ignore:
       - "CHANGELOG.md"
 
+  workflow_dispatch:
+
 permissions:
   contents: write
 
@@ -20,6 +22,13 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          fetch-tags: true
+
+      - name: Fetch all tags
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin --force --tags
 
       - name: Generate development changelog
         shell: bash
@@ -29,18 +38,41 @@ jobs:
           set -euo pipefail
 
           BRANCH="${GITHUB_REF_NAME}"
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
+
+          # Find the newest version tag.
+          PREVIOUS_TAG=$(
+            git tag \
+              --list '*+*' \
+              --sort=-version:refname |
+              head -n 1
+          )
 
           if [[ -n "$PREVIOUS_TAG" ]]; then
-            COMMIT_RANGE="${PREVIOUS_TAG}..HEAD"
+            if git merge-base --is-ancestor "$PREVIOUS_TAG" HEAD; then
+              # The release tag is part of this branch history.
+              COMMIT_RANGE="${PREVIOUS_TAG}..HEAD"
+              echo "Using release tag: ${PREVIOUS_TAG}"
+            else
+              # The branch diverged before the tagged release.
+              # Start at the common ancestor instead.
+              COMMON_BASE=$(git merge-base "$PREVIOUS_TAG" HEAD)
+              COMMIT_RANGE="${COMMON_BASE}..HEAD"
+
+              echo "Release tag ${PREVIOUS_TAG} is not an ancestor of this branch."
+              echo "Using common base: ${COMMON_BASE}"
+            fi
           else
-            COMMIT_RANGE="HEAD"
+            echo "No release tag was found."
+            echo "The changelog cannot be generated safely."
+            exit 1
           fi
 
           {
             echo "# Development Changelog"
             echo
             echo "**Branch:** \`${BRANCH}\`"
+            echo
+            echo "**Changes since:** \`${PREVIOUS_TAG}\`"
             echo
             echo "> This file is generated automatically from commits."
             echo "> The official release notes are maintained manually in \`CHANGELOG_RELEASE.md\`."
