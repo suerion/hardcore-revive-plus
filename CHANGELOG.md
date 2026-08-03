@@ -22,3 +22,4 @@
 - [a15b4b0](https://github.com/suerion/hardcore-revive-plus/commit/a15b4b0e8c18c59969d82b09e55d4d37a3ca93bc) fix ghost respawn
 - [930f639](https://github.com/suerion/hardcore-revive-plus/commit/930f639d2d236ae06fa0f35e2ecb7ab5abc680cc) updated the uninstall function to delete all hcrplus marker and functions!
 - [d7e6842](https://github.com/suerion/hardcore-revive-plus/commit/d7e68422fe959b033cc13a863c1a3dff924c1e14) downgrade
+- [5cd92e2](https://github.com/suerion/hardcore-revive-plus/commit/5cd92e261acf303c59d7bd6e2bd867041046be3d) update for 26.1.2
