@@ -25,16 +25,16 @@ execute as @a[tag=hcrplus_vanilla_respawn,scores={deaths=1..}] at @s run functio
 # Detect deaths and mark players waiting for their real vanilla respawn
 execute as @a[scores={deaths=1..}] at @s run function hcrplus:lives/death
 
-# TEMP DEBUG: Show pending player state
-execute as @a[tag=hcrplus_pending_ghost_spawn,gamemode=!spectator] run tellraw @a[tag=hcrplus_operator] [{"text":"[HCR DEBUG] ","color":"gold"},{"selector":"@s","color":"white"},{"text":" is NOT spectator","color":"yellow"}]
-execute as @a[tag=hcrplus_pending_ghost_spawn,gamemode=spectator] run tellraw @a[tag=hcrplus_operator] [{"text":"[HCR DEBUG] ","color":"gold"},{"selector":"@s","color":"white"},{"text":" is SPECTATOR","color":"aqua"}]
+# Store player health after the real vanilla respawn
+execute as @a[tag=hcrplus_pending_ghost_spawn] store result score @s hcrplus_respawn_health run data get entity @s Health 10
 
-# TEMP DEBUG: Disable automatic ghost conversion and teleport
-# execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=!spectator,nbt={DeathTime:0s}] run gamemode spectator @s
-# execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=spectator,nbt={DeathTime:0s}] at @s run function hcrplus:lives/apply_ghost_spawn
+# Convert the player into a ghost only after health has been restored
+execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_health=1..},gamemode=!spectator,nbt={DeathTime:0s}] run gamemode spectator @s
+
+# Apply the selected ghost spawn after switching to spectator
+execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_health=1..},gamemode=spectator,nbt={DeathTime:0s}] at @s run function hcrplus:lives/apply_ghost_spawn
 
 # Keep established ghosts in spectator after restart or force-gamemode
-# Pending players are excluded until their real vanilla respawn is complete
 execute as @a[tag=!hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
 
 # Handle normal respawns for players who still have lives
