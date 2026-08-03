@@ -18,3 +18,4 @@
 - [08cd5ef](https://github.com/suerion/hardcore-revive-plus/commit/08cd5ef4fcf0079aef02e96cfc606d075c0f186c) release only for 26.2 because entity predicate is renamed
 - [adb03a0](https://github.com/suerion/hardcore-revive-plus/commit/adb03a0e232cf6eaa30958449fe47eac9769de66) fix chunkloading from hcr spawn marker
 - [4cf11a9](https://github.com/suerion/hardcore-revive-plus/commit/4cf11a924681d21f679bf333a33c058d22846d5e) update death spectating fix for death marker
+- [9b7465d](https://github.com/suerion/hardcore-revive-plus/commit/9b7465dad309226230c8b3999a89d7a8ad912d4b) DEBUG DEATH SCREEN
