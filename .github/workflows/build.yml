@@ -25,6 +25,7 @@ jobs:
       version_changed: ${{ steps.version.outputs.version_changed }}
       mod_version: ${{ steps.version.outputs.mod_version }}
       minecraft_version: ${{ steps.version.outputs.minecraft_version }}
+      supported_minecraft_versions: ${{ steps.version.outputs.supported_minecraft_versions }}
       full_version: ${{ steps.version.outputs.full_version }}
 
     steps:
@@ -41,6 +42,7 @@ jobs:
 
           MOD_VERSION=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2-)
           MINECRAFT_VERSION=$(grep '^minecraft_version=' gradle.properties | cut -d'=' -f2-)
+          SUPPORTED_MINECRAFT_VERSIONS=$(grep '^supported_minecraft_versions=' gradle.properties | cut -d'=' -f2-)
           FULL_VERSION="${MOD_VERSION}+${MINECRAFT_VERSION}"
 
           VERSION_CHANGED=false
@@ -77,10 +79,12 @@ jobs:
           echo "version_changed=$VERSION_CHANGED" >> "$GITHUB_OUTPUT"
           echo "mod_version=$MOD_VERSION" >> "$GITHUB_OUTPUT"
           echo "minecraft_version=$MINECRAFT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "supported_minecraft_versions=$SUPPORTED_MINECRAFT_VERSIONS" >> "$GITHUB_OUTPUT"
           echo "full_version=$FULL_VERSION" >> "$GITHUB_OUTPUT"
 
           echo "Current mod version: $MOD_VERSION"
-          echo "Minecraft version: $MINECRAFT_VERSION"
+          echo "Minecraft build version: $MINECRAFT_VERSION"
+          echo "Supported Minecraft versions: $SUPPORTED_MINECRAFT_VERSIONS"
           echo "Full version: $FULL_VERSION"
           echo "Version changed: $VERSION_CHANGED"
 
@@ -159,6 +163,23 @@ jobs:
 
           echo "Release changelog is valid."
 
+      - name: Prepare supported Minecraft versions
+        id: supported-versions
+        shell: bash
+        env:
+          SUPPORTED_VERSIONS: ${{ needs.check-version.outputs.supported_minecraft_versions }}
+        run: |
+          set -euo pipefail
+
+          {
+            echo "versions<<EOF"
+            echo "$SUPPORTED_VERSIONS" | tr ',' '\n' | sed '/^[[:space:]]*$/d'
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Supported Minecraft versions:"
+          echo "$SUPPORTED_VERSIONS" | tr ',' '\n'
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -193,6 +214,7 @@ jobs:
         with:
           modrinth-id: Huz7HM6Q
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-tag: ${{ needs.check-version.outputs.full_version }}
@@ -212,7 +234,9 @@ jobs:
             build/distributions/datapack/*.zip
 
           game-versions: |
-            ${{ needs.check-version.outputs.minecraft_version }}
+            ${{ steps.supported-versions.outputs.versions }}
+
+          game-version-filter: none
 
           loaders: |
             datapack

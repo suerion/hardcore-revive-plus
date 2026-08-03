@@ -25,12 +25,17 @@ tasks.register("datapackmodJar", Zip) {
 
     from(".") {
         include "data/**"
-        include "META-INF/**"
         include "pack.mcmeta"
         include "pack.png"
         include "hardcore-revive-plus_pack.png"
         include "README.md"
         include "LICENSE"
+    }
+
+    from("META-INF") {
+        into("META-INF")
+        include "*.toml"
+        expand(version: project.version)
     }
 
     from("fabric.mod.json") {
@@ -70,13 +75,18 @@ tasks.register("onlyModJar", Zip) {
     destinationDirectory.set(layout.buildDirectory.dir("libs/mod"))
 
     from(".") {
-        include "META-INF/**"
         include "pack.mcmeta"
         include "pack.png"
         include "hardcore-revive-plus_pack.png"
         include "README.md"
         include "LICENSE"
         include "src/**"
+    }
+
+    from("META-INF") {
+        into("META-INF")
+        include "*.toml"
+        expand(version: project.version)
     }
 
     from("fabric.mod.json") {
