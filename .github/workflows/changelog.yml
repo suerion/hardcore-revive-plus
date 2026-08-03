@@ -15,6 +15,9 @@ permissions:
 jobs:
   changelog:
     name: Update CHANGELOG.md
+
+    if: github.ref != 'refs/heads/master'
+
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +42,6 @@ jobs:
 
           BRANCH="${GITHUB_REF_NAME}"
 
-          # Find the newest version tag.
           PREVIOUS_TAG=$(
             git tag \
               --list '*+*' \
@@ -49,12 +51,9 @@ jobs:
 
           if [[ -n "$PREVIOUS_TAG" ]]; then
             if git merge-base --is-ancestor "$PREVIOUS_TAG" HEAD; then
-              # The release tag is part of this branch history.
               COMMIT_RANGE="${PREVIOUS_TAG}..HEAD"
               echo "Using release tag: ${PREVIOUS_TAG}"
             else
-              # The branch diverged before the tagged release.
-              # Start at the common ancestor instead.
               COMMON_BASE=$(git merge-base "$PREVIOUS_TAG" HEAD)
               COMMIT_RANGE="${COMMON_BASE}..HEAD"
 
