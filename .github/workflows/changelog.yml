@@ -1,0 +1,76 @@
+name: Update Development Changelog
+
+on:
+  push:
+    branches-ignore:
+      - master
+    paths-ignore:
+      - "CHANGELOG.md"
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    name: Update CHANGELOG.md
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Generate development changelog
+        shell: bash
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          BRANCH="${GITHUB_REF_NAME}"
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
+
+          if [[ -n "$PREVIOUS_TAG" ]]; then
+            COMMIT_RANGE="${PREVIOUS_TAG}..HEAD"
+          else
+            COMMIT_RANGE="HEAD"
+          fi
+
+          {
+            echo "# Development Changelog"
+            echo
+            echo "**Branch:** \`${BRANCH}\`"
+            echo
+            echo "> This file is generated automatically from commits."
+            echo "> The official release notes are maintained manually in \`CHANGELOG_RELEASE.md\`."
+            echo
+            echo "## Unreleased"
+            echo
+
+            git log "$COMMIT_RANGE" \
+              --no-merges \
+              --reverse \
+              --invert-grep \
+              --grep="^Update automatic changelog$" \
+              --pretty=format:"- [%h](https://github.com/${REPOSITORY}/commit/%H) %s"
+
+            echo
+          } > CHANGELOG.md
+
+      - name: Commit updated changelog
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- CHANGELOG.md; then
+            echo "CHANGELOG.md is already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add CHANGELOG.md
+          git commit -m "Update automatic changelog"
+          git push

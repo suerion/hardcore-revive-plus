@@ -8,4 +8,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = "hardcore-revive-plus"
+rootProject.name = "hardcore-revive-plus-continued"
