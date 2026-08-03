@@ -1,6 +1,6 @@
 # Development Changelog
 
-**Branch:** `upgrade-to-26.x-and-mod-port`
+**Branch:** `downgrade-to-26.1.2-from-26.2`
 
 **Changes since:** `1.11.6+26.1.2`
 
@@ -20,3 +20,4 @@
 - [4cf11a9](https://github.com/suerion/hardcore-revive-plus/commit/4cf11a924681d21f679bf333a33c058d22846d5e) update death spectating fix for death marker
 - [9b7465d](https://github.com/suerion/hardcore-revive-plus/commit/9b7465dad309226230c8b3999a89d7a8ad912d4b) DEBUG DEATH SCREEN
 - [a15b4b0](https://github.com/suerion/hardcore-revive-plus/commit/a15b4b0e8c18c59969d82b09e55d4d37a3ca93bc) fix ghost respawn
+- [930f639](https://github.com/suerion/hardcore-revive-plus/commit/930f639d2d236ae06fa0f35e2ecb7ab5abc680cc) updated the uninstall function to delete all hcrplus marker and functions!
