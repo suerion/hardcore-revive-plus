@@ -2,7 +2,7 @@
 
 **Branch:** `upgrade-to-26.x-and-mod-port`
 
-**Changes since:** `1.11.7+26.1.2`
+**Changes since:** `1.12.0+26.2`
 
 > This file is generated automatically from commits.
 > The official release notes are maintained manually in `CHANGELOG_RELEASE.md`.
