@@ -34,6 +34,10 @@ execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_
 # Apply the selected ghost spawn after switching to spectator
 execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_health=1..},gamemode=spectator,nbt={DeathTime:0s}] at @s run function hcrplus:lives/apply_ghost_spawn
 
+# Migrate existing ghosts from older versions ghost state
+execute as @a[tag=!hcrplus_ghost_migrated,scores={Lives=0},gamemode=spectator] run tag @s add hcrplus_ghost
+tag @a[tag=!hcrplus_ghost_migrated] add hcrplus_ghost_migrated
+
 # Keep established ghosts in spectator after restart or force-gamemode
 execute as @a[tag=hcrplus_ghost,gamemode=!spectator] run gamemode spectator @s
 

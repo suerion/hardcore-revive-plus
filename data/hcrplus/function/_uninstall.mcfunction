@@ -152,6 +152,7 @@ tag @a remove Revive
 tag @a remove hcrplus_server_spawn_notice
 tag @a remove hcrplus_pending_ghost_spawn
 tag @a remove hcrplus_ghost
+tag @a remove hcrplus_ghost_migrated
 tag @a remove hcrplus_vanilla_respawn
 tag @a remove hcrplus_dying_player
 tag @a remove hcrplus_ghost_spawn_player
