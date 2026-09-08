@@ -3,6 +3,7 @@ scoreboard players set @s deaths 0
 scoreboard players remove @s hcrplus_vanilla_deaths 1
 tag @s remove hcrplus_vanilla_respawn
 gamemode survival @s
+tag @s remove hcrplus_ghost
 
 # Set lives
 execute if score mnc_settings mnc_defaultLives matches 1 run scoreboard players set @s Lives 1

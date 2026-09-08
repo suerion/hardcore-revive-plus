@@ -19,6 +19,7 @@ tag @s remove hcrplus_reviving_player
 function hcrplus:util/remove_death_marker
 
 gamemode survival @s
+tag @s remove hcrplus_ghost
 
 # Set lives
 execute if score mnc_settings mnc_defaultLives matches 1 run scoreboard players set @s Lives 1
