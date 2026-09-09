@@ -1,14 +1,11 @@
-# Release 1.11.7+26.2
+# Release 1.12.1+26.2
 
 ## Fixed
-- Fixed ghosts respawning at the incorrect location after leaving the vanilla death screen.
-- Fixed death location markers to always use the correct final death position.
-- Fixed HCRPlus Server Spawn chunk loading.
+- Fixed an issue where players could incorrectly become ghosts after a server restart.
 
 ## Changed
-- Improved ghost respawn handling.
-- Improved uninstall to fully remove HCRPlus markers, forced chunks, objectives and internal data.
+- Updated the Fabric Loader dependency to the latest supported version.
 
 ## Internal
-- Updated release and development workflows.
-- Improved changelog generation and build automation.
+- Added persistent ghost-state tracking to reliably distinguish actual ghosts from living players.
+- Added migration support for existing ghosts from older worlds to the new ghost-state system.
