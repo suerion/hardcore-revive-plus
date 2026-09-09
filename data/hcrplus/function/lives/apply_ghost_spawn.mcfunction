@@ -25,4 +25,5 @@ execute if score hcrplus_settings hcrplus_ghost_spawn_mode matches 3 at @e[type=
 # Cleanup
 tag @e[type=minecraft:marker,tag=hcrplus_death_location_match] remove hcrplus_death_location_match
 tag @s remove hcrplus_ghost_spawn_player
+tag @s add hcrplus_ghost
 tag @s remove hcrplus_pending_ghost_spawn
