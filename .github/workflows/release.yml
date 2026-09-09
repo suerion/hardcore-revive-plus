@@ -213,13 +213,67 @@ jobs:
             build/libs/datapackmod/*.jar
             build/distributions/datapack/*.zip
 
-      - name: Publish to Modrinth and GitHub
+      - name: Publish Data Pack Mod to Modrinth
         uses: Kira-NT/mc-publish@v3
         with:
           modrinth-id: Huz7HM6Q
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
 
+          name: Hardcore Revive+ v${{ needs.validate.outputs.mod_version }} - Data Pack Mod
+          version: ${{ needs.validate.outputs.full_version }}
+          version-type: release
+
+          changelog-file: CHANGELOG_RELEASE.md
+
+          files: |
+            build/libs/datapackmod/*.jar
+
+          game-versions: |
+            ${{ steps.supported-versions.outputs.versions }}
+
+          game-version-filter: none
+
+          loaders: |
+            fabric
+            quilt
+            neoforge
+
+          fail-mode: fail
+          retry-attempts: 3
+          retry-delay: 10000
+
+      - name: Publish Data Pack to Modrinth
+        uses: Kira-NT/mc-publish@v3
+        with:
+          modrinth-id: Huz7HM6Q
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
+
+          name: Hardcore Revive+ v${{ needs.validate.outputs.mod_version }} - Data Pack
+          version: ${{ needs.validate.outputs.full_version }}
+          version-type: release
+
+          changelog-file: CHANGELOG_RELEASE.md
+
+          files: |
+            build/distributions/datapack/*.zip
+
+          game-versions: |
+            ${{ steps.supported-versions.outputs.versions }}
+
+          game-version-filter: none
+
+          loaders: |
+            datapack
+
+          fail-mode: fail
+          retry-attempts: 3
+          retry-delay: 10000
+
+      - name: Publish GitHub Release
+        uses: Kira-NT/mc-publish@v3
+        with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-tag: ${{ needs.validate.outputs.full_version }}
           github-commitish: ${{ github.sha }}
