@@ -1,6 +1,6 @@
 # Development Changelog
 
-**Branch:** `26.2-ghost-fix-on-restart`
+**Branch:** `26.2`
 
 **Changes since:** `1.12.0+26.2`
 
