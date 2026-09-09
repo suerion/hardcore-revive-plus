@@ -4,7 +4,7 @@
 
 Hardcore Revive+ is now community maintained.
 
-The latest stable release is **v1.11.7** for **Minecraft 26.1.2** and **v1.12.0** for **Minecraft 26.2** and is available as both, a traditional datapack and as a datapack packaged inside a mod.
+The latest stable release is **v1.11.7** for **Minecraft 26.1.2** and **v1.12.1** for **Minecraft 26.2** and is available as both, a traditional datapack and as a datapack packaged inside a mod.
 
 Development is currently focused on keeping Hardcore Revive+ compatible with future Minecraft versions while also continuing work on the standalone Fabric mod port.
 
