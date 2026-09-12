@@ -12,15 +12,14 @@
         "frame": "challenge",
         "show_toast": true,
         "announce_to_chat": true,
-        "hidden": false,
-        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+        "hidden": false
     },
     "parent": "hcrplus:root",
     "criteria": {
         "Unlocked": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "hcrplus:life_jam"
+                "recipes": "hcrplus:life_jam"
             }
         }
     }

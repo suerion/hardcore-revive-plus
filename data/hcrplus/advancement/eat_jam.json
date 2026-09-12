@@ -3,7 +3,6 @@
       "requirement": {
         "trigger": "minecraft:consume_item",
         "conditions": {
-          "player": [],
           "item": {
             "items": "minecraft:honey_bottle",
             "predicates": {
@@ -22,4 +21,3 @@
       "function": "hcrplus:items/eat_jam"
     }
   }
-  
