@@ -12,3 +12,4 @@
 - [741aae3](https://github.com/suerion/hardcore-revive-plus/commit/741aae3164e5a32c6b78189254aa3b4ef60b1342) update for 26.2 finished after tests
 - [d6678ba](https://github.com/suerion/hardcore-revive-plus/commit/d6678ba5466af8c054973bb84ee58d94a4575373) update release workflow, to release on git, then updated datapack and mod on modrinth as own file
 - [c7cc685](https://github.com/suerion/hardcore-revive-plus/commit/c7cc685dfedf9476b4d56c83adc804da4840aa3d) update release workflow for future to release datapack, datapackmod and standalone mod in future
+- [f6f7441](https://github.com/suerion/hardcore-revive-plus/commit/f6f744101f83019b8086ae59391d91f4042b007c) prepare 1.13 for minecraft 26.3 - first update new advencements predicates
