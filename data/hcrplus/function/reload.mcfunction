@@ -21,7 +21,6 @@ scoreboard objectives add mncDefaults dummy
 scoreboard objectives add mnc_openedSettings dummy
 scoreboard objectives add mnc_lifeSteal dummy
 scoreboard objectives add mnc_autoRevive dummy
-scoreboard objectives add reviveTimer dummy
 scoreboard objectives add minute dummy
 scoreboard objectives add second dummy
 scoreboard objectives add mnc_announceRevive dummy
@@ -34,7 +33,6 @@ scoreboard objectives add hcrplus_revive_spawn_mode dummy
 
 scoreboard objectives add hcrplus_player_id dummy
 scoreboard objectives add hcrplus_next_player_id dummy
-scoreboard objectives add hcrplus_server_spawn_notice dummy
 scoreboard objectives add hcrplus_respawn_health dummy
 
 # Revive timer because Minecraft doesn't have a built-in way to do this

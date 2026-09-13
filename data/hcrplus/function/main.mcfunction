@@ -2,6 +2,10 @@
 gamerule immediate_respawn false
 gamerule spectators_generate_chunks true
 
+# Defaults
+execute unless score mnc_settings mncDefaults matches 1 run function hcrplus:defaults
+scoreboard players set mnc_settings mncDefaults 1
+
 # Destroy disabled Soul Charms
 execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:totem_of_undying"}}
 execute if score mnc_settings mnc_revival matches 0 at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run summon item ~ ~ ~ {Item:{id:"minecraft:redstone_block",count:4}}
@@ -88,10 +92,10 @@ execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] run tag @s 
 
 # Auto Revive
 execute if score mnc_settings mnc_autoRevive matches 1 as @a[tag=hcrplus_ghost,scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
-execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 1 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 1200
-execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 2 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 6000
-execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 3 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 12000
-execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 4 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 72000
+execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 1 unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 1200
+execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 2 unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 6000
+execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 3 unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 12000
+execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 4 unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 72000
 function hcrplus:events/revive_timer
 
 # Fix auto revive timer for players revived via soul charm
@@ -101,14 +105,10 @@ scoreboard players reset @a[scores={Lives=1..}] minute
 scoreboard players reset @a[scores={Lives=1..}] second
 
 # Fix players migrating from old packs
-execute as @a[tag=nHrCheck] run execute unless score @s Lives matches 0.. run execute unless score mnc_settings mnc_migrated matches 1 run function hcrplus:migrate/hcrplus
-execute as @a[tag=nHrCheck] run execute unless score @s Lives matches 0.. run scoreboard players set @s Lives 1
-execute as @a[tag=nHrCheck, scores={Lives=4}] unless score mnc_settings mnc_defaultLives matches 5 run scoreboard players set @s Lives 3
-execute as @a[tag=!mncHealthFix, scores={Lives=4}] run execute unless score mnc_settings mnc_defaultLives matches 3 run attribute @s max_health base set 20
-execute as @a[tag=!mncHealthFix, scores={Lives=4}] run execute unless score mnc_settings mnc_defaultLives matches 3 run tag @s add mncHealthFix
-execute as @a[tag=!mncHealthFix, scores={Lives=1}] run attribute @s max_health base set 20
-execute as @a[tag=!mncHealthFix, scores={Lives=1}] run tag @s add mncHealthFix
-
-# Defaults
-execute unless score mnc_settings mncDefaults matches 1 run function hcrplus:defaults
-scoreboard players set mnc_settings mncDefaults 1
+execute as @a[tag=nHrCheck] unless score @s Lives matches 0.. unless score mnc_settings mnc_migrated matches 1 run function hcrplus:migrate/hcrplus
+execute as @a[tag=nHrCheck] unless score @s Lives matches 0.. run scoreboard players set @s Lives 1
+execute as @a[tag=nHrCheck,scores={Lives=4}] unless score mnc_settings mnc_defaultLives matches 5 run scoreboard players set @s Lives 3
+execute as @a[tag=!mncHealthFix,scores={Lives=4}] unless score mnc_settings mnc_defaultLives matches 3 run attribute @s max_health base set 20
+execute as @a[tag=!mncHealthFix,scores={Lives=4}] unless score mnc_settings mnc_defaultLives matches 3 run tag @s add mncHealthFix
+execute as @a[tag=!mncHealthFix,scores={Lives=1}] run attribute @s max_health base set 20
+execute as @a[tag=!mncHealthFix,scores={Lives=1}] run tag @s add mncHealthFix
