@@ -17,3 +17,4 @@
 - [4183e18](https://github.com/suerion/hardcore-revive-plus/commit/4183e183c7cd4d74c7511108d77132ec518a6ac6) Fix ghost reviving, Life Jam cases and settings UI
 - [d2f4c86](https://github.com/suerion/hardcore-revive-plus/commit/d2f4c8620e4e2c30c50331f043b3e8ca4356d749) Last UI Fixes for 26.3 rc2
 - [fb1d96b](https://github.com/suerion/hardcore-revive-plus/commit/fb1d96b105aec9d03826f912656c1151e422ec24) last preset fixes for auto revive
+- [90fa248](https://github.com/suerion/hardcore-revive-plus/commit/90fa248fb8eec4cecb366b5c11c327ab93879fb1) update release changelog
