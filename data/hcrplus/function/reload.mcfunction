@@ -35,6 +35,15 @@ scoreboard objectives add hcrplus_player_id dummy
 scoreboard objectives add hcrplus_next_player_id dummy
 scoreboard objectives add hcrplus_respawn_health dummy
 
+# Initialize missing or invalid settings after updates
+execute unless score hcrplus_settings hcrplus_difficulty_mode matches 0..3 run scoreboard players set hcrplus_settings hcrplus_difficulty_mode 0
+execute unless score hcrplus_settings hcrplus_ghost_spawn_mode matches 0..3 run scoreboard players set hcrplus_settings hcrplus_ghost_spawn_mode 3
+execute unless score hcrplus_settings hcrplus_revive_spawn_mode matches 0..2 run scoreboard players set hcrplus_settings hcrplus_revive_spawn_mode 0
+
+execute unless score mnc_settings mnc_autoRevive matches 0..1 run scoreboard players set mnc_settings mnc_autoRevive 0
+execute unless score mnc_settings mnc_autoReviveTimer matches 1..4 run scoreboard players set mnc_settings mnc_autoReviveTimer 3
+execute unless score mnc_settings mnc_announceRevive matches 0..1 run scoreboard players set mnc_settings mnc_announceRevive 1
+
 # Revive timer because Minecraft doesn't have a built-in way to do this
 scoreboard objectives add dummy_1200 dummy
 scoreboard objectives add dummy_20 dummy

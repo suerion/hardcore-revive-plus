@@ -86,9 +86,13 @@ execute as @a[tag=!nHrCheck] unless score @s hcrplus_ghostCooldown matches 0.. r
 execute unless score mnc_settings mnc_openedSettings matches 1 as @a[tag=!nHrCheck] run function hcrplus:settings/join_prompt
 tag @a add nHrCheck
 
-# Notify operators once per join if HCRPlus Server Spawn is not set
-execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [{"text":"[HCRPlus] ","color":"red"},{"text":"Server Spawn is not set. If you want to use Server Spawn for Ghost or Auto Revive, open Spawn Settings and click Set Current Position.","color":"yellow"}]
-execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] run tag @s add hcrplus_server_spawn_notice
+# Notify operators if Server Spawn is required but not configured
+execute as @a[tag=hcrplus_operator,tag=hcrplus_server_spawn_notice] if entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tag @s remove hcrplus_server_spawn_notice
+execute as @a[tag=hcrplus_operator,tag=hcrplus_server_spawn_notice] unless score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 unless score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run tag @s remove hcrplus_server_spawn_notice
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 run tellraw @s [{"text":"[HCRPlus] ","color":"red"},{"text":"Server Spawn is selected for Ghost Spawn, but no HCRPlus Server Spawn has been set. Open Spawn Settings and click Set Current Position.","color":"yellow"}]
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 run tag @s add hcrplus_server_spawn_notice
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run tellraw @s [{"text":"[HCRPlus] ","color":"red"},{"text":"Server Spawn is selected for Auto Revive, but no HCRPlus Server Spawn has been set. Open Spawn Settings and click Set Current Position.","color":"yellow"}]
+execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run tag @s add hcrplus_server_spawn_notice
 
 # Auto Revive
 execute if score mnc_settings mnc_autoRevive matches 1 as @a[tag=hcrplus_ghost,scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
