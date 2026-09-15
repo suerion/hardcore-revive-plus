@@ -12,6 +12,8 @@ execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 0 run tellra
 execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run tellraw @s [" ",{"color":"aqua","text":"Current Auto Revive: Server Spawn"},{"text":"\n"}]
 execute if score hcrplus_settings hcrplus_revive_spawn_mode matches 2 run tellraw @s [" ",{"color":"aqua","text":"Current Auto Revive: Death Location"},{"text":"\n"}]
 
-tellraw @s [" ",{"click_event":{"action":"run_command","command":"/trigger _hcrplus_settings set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Previous Page"}]},"text":"<-- Return"},{"color":"gray","text":"     - 2/2 -     "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_spawn_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Previous Page"}]},"text":"Page 1 -->"},{"text":"\n "}]
+execute unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_revive_spawn_mode matches 1 run tellraw @s [" ",{"color":"red","text":"⚠ Auto Revive is set to Server Spawn, but no HCRPlus Server Spawn has been configured."},{"text":"\n"}]
+
+tellraw @s [" ",{"click_event":{"action":"run_command","command":"/trigger _hcrplus_settings set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Return to Settings"}]},"text":"<-- Return"},{"color":"gray","text":"     - 2/2 -     "},{"click_event":{"action":"run_command","command":"/trigger hcrplus_spawn_page1 set 1"},"color":"yellow","hover_event":{"action":"show_text","value":[{"text":"Previous Page"}]},"text":"<-- Page 1"},{"text":"\n "}]
 
 playsound entity.experience_orb.pickup player @s ~ ~ ~ 0.6 1

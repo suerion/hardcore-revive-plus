@@ -1,14 +1,14 @@
 {
   "pack": {
-    "min_format": [107, 1],
-    "max_format": [107, 1],
+    "min_format": [121, 0],
+    "max_format": [121, 0],
     "description": [
       {
         "translate": "Hardcore Revive+",
         "color": "red"
       },
       {
-        "translate": " [v1.12.1]",
+        "translate": " [v1.13.0]",
         "color": "#707070"
       },
       {

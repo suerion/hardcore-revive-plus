@@ -1,5 +1,5 @@
 # Check for players touching revive item
-execute at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run tag @p[distance=..2,gamemode=spectator] add Revive
+execute at @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}},PickupDelay:0s}] run tag @p[distance=..2,tag=hcrplus_ghost,gamemode=spectator] add Revive
 execute at @a[tag=Revive] run kill @e[type=minecraft:item,nbt={Item:{components:{"minecraft:custom_data":{Revive:1b}}}},limit=1,distance=..5]
 execute as @a[tag=Revive] at @s run gamemode survival @s
 execute as @a[tag=Revive] run tag @s remove hcrplus_ghost

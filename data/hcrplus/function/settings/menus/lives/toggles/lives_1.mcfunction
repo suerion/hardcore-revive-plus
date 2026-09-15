@@ -1,5 +1,5 @@
 scoreboard players set mnc_settings mnc_defaultLives 1
-scoreboard players set @a Lives 1
+scoreboard players set @a[tag=!hcrplus_ghost] Lives 1
 
 team remove 0
 team remove 1

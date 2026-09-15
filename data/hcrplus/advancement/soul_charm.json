@@ -3,7 +3,7 @@
         "Unlocked": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "hcrplus:soul_charm"
+                "recipes": "hcrplus:soul_charm"
             }
         }
     },

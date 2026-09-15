@@ -3,7 +3,7 @@
         "Unlocked": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "hcrplus:life_jam"
+                "recipes": "hcrplus:life_jam"
             }
         }
     },
