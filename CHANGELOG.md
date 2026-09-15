@@ -10,3 +10,4 @@
 ## Unreleased
 
 - [5617251](https://github.com/suerion/hardcore-revive-plus/commit/561725199b8df5d33c1b3b27bd03d16ef129451f) changelog release update, 1.13 to 26.1.2
+- [9cc2786](https://github.com/suerion/hardcore-revive-plus/commit/9cc2786647380ceb6a5623ffe38ca872f532ce89) backport update, 1.13 to 26.1.2
