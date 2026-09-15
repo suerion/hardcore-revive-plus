@@ -34,8 +34,12 @@ execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_
 # Apply the selected ghost spawn after switching to spectator
 execute as @a[tag=hcrplus_pending_ghost_spawn,scores={Lives=..0,hcrplus_respawn_health=1..},gamemode=spectator,nbt={DeathTime:0s}] at @s run function hcrplus:lives/apply_ghost_spawn
 
+# Migrate existing ghosts from older versions ghost state
+execute as @a[tag=!hcrplus_ghost_migrated,scores={Lives=0},gamemode=spectator] run tag @s add hcrplus_ghost
+tag @a[tag=!hcrplus_ghost_migrated] add hcrplus_ghost_migrated
+
 # Keep established ghosts in spectator after restart or force-gamemode
-execute as @a[tag=!hcrplus_pending_ghost_spawn,scores={Lives=..0},gamemode=!spectator] run gamemode spectator @s
+execute as @a[tag=hcrplus_ghost,gamemode=!spectator] run gamemode spectator @s
 
 # Handle normal respawns for players who still have lives
 execute as @a[scores={Lives=1..,respawn=1},gamemode=spectator] run function hcrplus:lives/respawn
@@ -46,13 +50,13 @@ execute as @a[scores={lifeReset=1..}] if score mnc_settings mnc_defaultLives mat
 execute as @a[scores={lifeReset=1..}] if score mnc_settings mnc_defaultLives matches 5 run function hcrplus:items/life_reset_5
 
 # Ghost particles
-execute at @a[gamemode=spectator,scores={Lives=..0}] run particle dust{color:[1.000,1.000,1.000],scale:1} ~ ~1.5 ~ 0.5 0.5 0.5 0 2 force
+execute at @a[tag=hcrplus_ghost,gamemode=spectator] run particle dust{color:[1.000,1.000,1.000],scale:1} ~ ~1.5 ~ 0.5 0.5 0.5 0 2 force
 
 # Ghost proximity alert (actionbar one-time per proximity event)
 function hcrplus:events/ghost_near
 
 # Possess
-execute if score mnc_settings mnc_possession matches 1 at @a[gamemode=spectator,scores={Lives=..0}] run tag @a[distance=..0.5,gamemode=survival] add Possessed
+execute if score mnc_settings mnc_possession matches 1 at @a[tag=hcrplus_ghost,gamemode=spectator] run tag @a[distance=..0.5,gamemode=survival] add Possessed
 effect give @a[tag=Possessed] minecraft:strength 1 0 true
 effect give @a[tag=Possessed] minecraft:speed 1 0 true
 effect give @a[tag=Possessed] minecraft:resistance 1 0 true
@@ -83,7 +87,7 @@ execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] unless enti
 execute as @a[tag=hcrplus_operator,tag=!hcrplus_server_spawn_notice] run tag @s add hcrplus_server_spawn_notice
 
 # Auto Revive
-execute if score mnc_settings mnc_autoRevive matches 1 as @a[scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
+execute if score mnc_settings mnc_autoRevive matches 1 as @a[tag=hcrplus_ghost,scores={Lives=0},tag=!autoRevive,gamemode=spectator] run tag @s add autoRevive
 execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 1 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 1200
 execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 2 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 6000
 execute as @a[tag=autoRevive] if score mnc_settings mnc_autoReviveTimer matches 3 run execute unless score @s reviveTimer matches 1.. run scoreboard players set @s reviveTimer 12000
