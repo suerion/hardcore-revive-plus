@@ -1,6 +1,6 @@
 # Development Changelog
 
-**Branch:** `backport-1.13-to-26.1.2`
+**Branch:** `26.1.2`
 
 **Changes since:** `1.13.0+26.3`
 
