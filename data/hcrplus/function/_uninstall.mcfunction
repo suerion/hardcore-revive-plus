@@ -49,7 +49,6 @@ scoreboard objectives remove hcrplus_revive_spawn_mode
 
 scoreboard objectives remove hcrplus_player_id
 scoreboard objectives remove hcrplus_next_player_id
-scoreboard objectives remove hcrplus_server_spawn_notice
 scoreboard objectives remove hcrplus_respawn_health
 
 # Internal timer scores

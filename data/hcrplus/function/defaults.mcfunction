@@ -1,6 +1,6 @@
-###############################################################################
-# HARDCORE REVIVE+ DEFAULT SETTINGS - CHANGE THESE BEFORE CREATING YOUR WORLD #
-###############################################################################
+###############################################################################################
+# HARDCORE REVIVE+ DEFAULT SETTINGS - THESE VALUES ARE APPLIED ONCE WHEN HCR PLUS INITIALIZES #
+###############################################################################################
 
 # Enable Life Jam (1 = Enabled, 0 = Disabled)
 scoreboard players set mnc_settings mnc_lifeJam 1
@@ -46,9 +46,15 @@ scoreboard players set mnc_settings mnc_autoReviveTimer 3
 # 3 = Force Hard
 scoreboard players set hcrplus_settings hcrplus_difficulty_mode 0
 
-# Spawn Mode
-# 0 = World Spawn
-# 1 = Death Location (Default)
-# 2 = Nearest Living Player
-# 3 = Bed / Respawn Anchor
-scoreboard players set hcrplus_settings hcrplus_spawn_mode 1
+# Ghost Spawn Mode
+# 0 = Server Spawn
+# 1 = Nearest Living Player
+# 2 = Vanilla Spawn
+# 3 = Death Location
+scoreboard players set hcrplus_settings hcrplus_ghost_spawn_mode 3
+
+# Auto Revive Spawn Mode
+# 0 = Vanilla Spawn
+# 1 = Server Spawn
+# 2 = Death Location
+scoreboard players set hcrplus_settings hcrplus_revive_spawn_mode 0

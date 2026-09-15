@@ -9,7 +9,7 @@ scoreboard players set mnc_settings mnc_revival 0
 scoreboard players set mnc_settings mnc_lifeJam 1
 scoreboard players set mnc_settings mnc_soulCharmDebuffs 0
 
-scoreboard players set @a Lives 3
+scoreboard players set @a[scores={Lives=1..}] Lives 3
 scoreboard objectives setdisplay list Lives
 
 function hcrplus:settings/menus/presets/page1_casual

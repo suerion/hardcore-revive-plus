@@ -1,5 +1,4 @@
-# If you're reading this please know that implementing these triggers make me want to kill myself
-# I'm not proud of this, but it's the only way to make clickable menus work anymore
+# Handles clickable settings menu triggers, could be better in future
 
 # Main HCR+ Settings Menu
 execute as @a[scores={_hcrplus_settings=1..}] if entity @s[tag=hcrplus_operator] run function hcrplus:settings/menus/main
