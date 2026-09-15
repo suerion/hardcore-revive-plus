@@ -6,6 +6,7 @@ tellraw @s [" ",{"color":"gray","hover_event":{"action":"show_text","value":[{"t
 
 execute unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [" ",{"color":"gray","text":" Status: "},{"color":"red","text":"Not Set"},{"text":"\n"}]
 execute if entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] run tellraw @s [" ",{"color":"gray","text":" Status: "},{"color":"green","text":"Set"},{"text":"\n"}]
+execute unless entity @e[type=minecraft:marker,tag=hcrplus_server_spawn,limit=1] if score hcrplus_settings hcrplus_ghost_spawn_mode matches 0 run tellraw @s [" ",{"color":"red","text":"⚠ Ghost Spawn is set to Server Spawn, but no HCRPlus Server Spawn has been configured."},{"text":"\n"}]
 
 tellraw @s [" ",{"click_event":{"action":"run_command","command":"/trigger hcrplus_set_server_spawn set 1"},"color":"green","hover_event":{"action":"show_text","value":[{"text":"Use your current position as the HCRPlus Server Spawn."}]},"text":"Set Current Position"},{"text":"\n"}]
 
