@@ -18,3 +18,4 @@
 - [d2f4c86](https://github.com/suerion/hardcore-revive-plus/commit/d2f4c8620e4e2c30c50331f043b3e8ca4356d749) Last UI Fixes for 26.3 rc2
 - [fb1d96b](https://github.com/suerion/hardcore-revive-plus/commit/fb1d96b105aec9d03826f912656c1151e422ec24) last preset fixes for auto revive
 - [90fa248](https://github.com/suerion/hardcore-revive-plus/commit/90fa248fb8eec4cecb366b5c11c327ab93879fb1) update release changelog
+- [b7c63ca](https://github.com/suerion/hardcore-revive-plus/commit/b7c63ca01815fe9afddcefc41dfb0514878386f8) update to 26.3 release (not rc)
